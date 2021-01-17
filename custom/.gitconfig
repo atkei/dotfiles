@@ -1,0 +1,30 @@
+[includeIf "gitdir:~/github/atktng/"]
+    path = ~/github/atktng/.gitconfig
+
+[includeIf "gitdir:~/gitlab/work/"]
+    path = ~/gitlab/work/.gitconfig
+
+[includeIf "gitdir:~/bitbucket/work/"]
+    path = ~/bitbucket/work/.gitconfig
+
+[core]
+    editor = vim
+
+[alias]
+    br = branch
+    ci = commit
+    pb = push
+    cr = crecord
+    co = checkout
+    cob = checkout --track -b
+    df = diff
+    loq = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white) %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+    l = log --graph --decorate -20 --date-order --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(bold blue)%h%Creset %C(black bold)%ad%Creset %s %C(bold blue)%aN%Creset%C(auto)%d'
+    lg = log --graph --decorate -20 --all --date-order --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(bold blue)%h%Creset %C(black bold)%ad%Creset %s %C(bold blue)%aN%Creset%C(auto)%d'
+    la = log --graph --decorate --all --date-order --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(bold blue)%h%Creset %C(black bold)%ad%Creset %s %C(bold blue)%aN%Creset%C(auto)%d'
+    rb = rbranch
+    st = status -s --no-untracked-files
+    vim = difftool
+    serv = daemon --reuseaddr --base-path=. --export-all --verbose --enable=receive-pack
+    mt = mergetool
+    m3 = mergetool -t merge3
