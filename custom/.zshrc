@@ -81,7 +81,9 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # kubectl
-[[ /bin/kubectl ]] && source <(kubectl completion zsh)
+if command -v kubectl 1>/dev/null 2>&1; then
+    [[ /bin/kubectl ]] && source <(kubectl completion zsh)
+fi
 
 # WSL
 if uname -r | grep -i 'microsoft' 1>/dev/null 2>&1; then
