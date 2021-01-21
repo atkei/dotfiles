@@ -10,6 +10,7 @@ fi
 
 # Aliases
 alias k='kubectl'
+alias awsp='source _awsp'
 alias g='git'
 alias l='ls -ltr --color=auto'
 alias so='source'
