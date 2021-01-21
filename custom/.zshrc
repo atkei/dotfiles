@@ -24,6 +24,8 @@ alias rm='rm -i'
 alias mkdir='mkdir -p'
 alias ..='c ../'
 alias diff='diff -U1'
+alias -g G='| grep -i'
+alias -g L='| less'
 
 # Vim keybind
 bindkey -v
