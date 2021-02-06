@@ -94,11 +94,3 @@ if uname -r | grep -i 'microsoft' 1>/dev/null 2>&1; then
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
 fi
 
-# Terminal log
-if [ -z "$BEING_LOGGED" ]; then
-    export BEING_LOGGED="yes"
-    LOG_PATH="${HOME}/log/terminal/$(date -u +'%Y-%m-%d')"
-    LOG_FILE="${LOG_PATH}/$(date -u +'%H:%M:%S-').log"
-    mkdir -p "${LOG_PATH}"
-    exec script "${LOG_FILE}"
-fi
