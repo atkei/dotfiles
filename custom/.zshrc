@@ -92,5 +92,9 @@ fi
 if uname -r | grep -i 'microsoft' 1>/dev/null 2>&1; then
     # X Server's location (https://github.com/microsoft/WSL/issues/4106#issuecomment-501885675)
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
+
+    # appendWindowsPath=false (https://docs.microsoft.com/en-us/windows/wsl/wsl-config)
+    # cd $HOME/win_bin && ln -s /path/to/windows_command
+    export PATH=$PATH:$HOME/win_bin
 fi
 
