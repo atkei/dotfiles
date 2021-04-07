@@ -34,6 +34,9 @@ bindkey -v
 # Editor
 export EDITOR=vim
 
+# Disable beep
+unsetopt BEEP
+
 # history
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
