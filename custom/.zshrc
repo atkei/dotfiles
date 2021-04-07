@@ -69,6 +69,10 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
 
+# pipenv
+# https://pipenv-fork.readthedocs.io/en/latest/advanced.html#custom-virtual-environment-location
+export PIPENV_VENV_IN_PROJECT=true
+
 # goenv
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
