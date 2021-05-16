@@ -95,6 +95,9 @@ if command -v kubectl 1>/dev/null 2>&1; then
     [[ /bin/kubectl ]] && source <(kubectl completion zsh)
 fi
 
+# Rootless mode of Docker
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
 # WSL
 if uname -r | grep -i 'microsoft' 1>/dev/null 2>&1; then
     # X Server's location (https://github.com/microsoft/WSL/issues/4106#issuecomment-501885675)
