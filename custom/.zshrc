@@ -27,6 +27,8 @@ alias ..='c ../'
 alias diff='diff -U1'
 alias -g G='| grep -i'
 alias -g L='| less'
+alias dcu='docker-compose up -d'
+alias dcd='docker-compose down'
 
 # Vim keybind
 bindkey -v
