@@ -95,7 +95,11 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # kubectl
 if command -v kubectl 1>/dev/null 2>&1; then
     [[ /bin/kubectl ]] && source <(kubectl completion zsh)
+    [ ! -f ~/.kubectl_aliases ] && curl -O https://raw.githubusercontent.com/ahmetb/kubectl-alias/master/.kubectl_aliases
+    [ -f ~/.kubectl_aliases ] && source <(cat ~/.kubectl_aliases | sed -r 's/(kubectl.*) --watch/watch \1/g')
 fi
+
+function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
 
 # Rootless mode of Docker
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
