@@ -104,6 +104,10 @@ function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
 # Rootless mode of Docker
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
+# Flutter
+# https://flutter.dev/docs/get-started/install/linux#install-flutter-manuallyexport
+PATH="$PATH:${HOME}/flutter/bin"
+
 # WSL
 if uname -r | grep -i 'microsoft' 1>/dev/null 2>&1; then
     # X Server's location (https://github.com/microsoft/WSL/issues/4106#issuecomment-501885675)

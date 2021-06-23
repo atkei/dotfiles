@@ -28,13 +28,7 @@ nnoremap <Leader>eee :e<CR>
 nnoremap <Leader>wq :wq<CR>
 nnoremap <Leader>nn :noh<CR>
 
-"" windo
-nnoremap <Leader>s :<C-u>split<CR>
-nnoremap <Leader>v :<C-u>vsplit<CR>
-
-"" Tabs
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
+"" tab
 nnoremap <Leader>t :tabnew<CR>
 
 "" ignore wrap
@@ -60,17 +54,6 @@ nmap <silent> <S-Tab> 15<Left>
 vmap <C-x> :!pbcopy<CR>
 vmap <C-c> :w !pbcopy<CR><CR>
 
-"" move line/word
-nmap <C-e> $
-nmap <C-a> 0
-nmap <C-f> W
-nmap <C-b> B
-imap <C-e> <C-o>$
-imap <C-a> <C-o>0
-imap <C-f> <C-o>W
-imap <C-b> <C-o>B
-
-
 " plugin
 call plug#begin(expand('~/.vim/plugged'))
 Plug 'mattn/vim-starwars'
@@ -90,7 +73,7 @@ Plug 'vim-airline/vim-airline-themes'
 "" auto bracket
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
-"" auto format
+"" auto ormat
 Plug 'Chiel92/vim-autoformat'
 "" error detect
 Plug 'scrooloose/syntastic'
@@ -145,7 +128,7 @@ if exists('make')
 endif
 
 "" auto-format
-au BufWrite * :Autoformat
+""au BufWrite * :Autoformat
 
 "" vim-airline
 let g:airline_theme = 'powerlineish'
