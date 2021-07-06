@@ -69,8 +69,6 @@ Plug 'vim-airline/vim-airline-themes'
 "" auto bracket
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
-"" auto format
-Plug 'Chiel92/vim-autoformat'
 "" error detect
 Plug 'scrooloose/syntastic'
 "" delete white space
@@ -122,9 +120,6 @@ let g:make = 'gmake'
 if exists('make')
     let g:make = 'make'
 endif
-
-"" auto-format
-""au BufWrite * :Autoformat
 
 "" vim-airline
 let g:airline_theme = 'powerlineish'
