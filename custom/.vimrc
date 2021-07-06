@@ -21,15 +21,17 @@ let mapleader="\<Space>"
 "" escape
 inoremap <silent> jj <ESC>
 
-"" save
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>qqq :q!<CR>
-nnoremap <Leader>eee :e<CR>
-nnoremap <Leader>wq :wq<CR>
-nnoremap <Leader>nn :noh<CR>
-
 "" tab
-nnoremap <Leader>t :tabnew<CR>
+nnoremap tn :tabnew<CR>
+nnoremap th :tabnext<CR>
+nnoremap tl :tabprev<CR>
+nnoremap th :tabfirst<CR>
+nnoremap tk :tabnext<CR>
+nnoremap tj :tabprev<CR>
+nnoremap tl :tablast<CR>
+nnoremap tt :tabedit<Space>
+nnoremap tm :tabm<Space>
+nnoremap td :tabclose<CR>
 
 "" ignore wrap
 nnoremap j gj
@@ -37,14 +39,8 @@ nnoremap k gk
 nnoremap <Down> gj
 nnoremap <Up> gk
 
-"" Sft + y => yunk to EOL
+"" yank to the end of current line
 nnoremap Y y$
-
-"" + => increment
-nnoremap + <C-a>
-
-"" - => decrement
-nnoremap - <C-x>
 
 "" move 15 words
 nmap <silent> <Tab> 15<Right>
@@ -73,7 +69,7 @@ Plug 'vim-airline/vim-airline-themes'
 "" auto bracket
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
-"" auto ormat
+"" auto format
 Plug 'Chiel92/vim-autoformat'
 "" error detect
 Plug 'scrooloose/syntastic'
