@@ -42,10 +42,6 @@ nnoremap <Up> gk
 "" yank to the end of current line
 nnoremap Y y$
 
-"" move 15 words
-nmap <silent> <Tab> 15<Right>
-nmap <silent> <S-Tab> 15<Left>
-
 "" pbcopy for OSX copy/paste
 vmap <C-x> :!pbcopy<CR>
 vmap <C-c> :w !pbcopy<CR><CR>
