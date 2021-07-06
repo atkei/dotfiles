@@ -1,52 +1,51 @@
-" setting
 if has('vim_starting')
+    " Disable compatible option (http://vimdoc.sourceforge.net/htmldoc/options.html#'compatible')
     set nocompatible
 endif
 
+" Install vim-plug if needed (https://github.com/junegunn/vim-plug)
 if !filereadable(expand('~/.vim/autoload/plug.vim'))
     if !executable("curl")
-        echoerr "You have to install curl or first install vim-plug yourself!"
+        echoerr "You have to install curl or install vim-plug manually."
         execute "q!"
     endif
-    echo "Installing Vim-Plug..."
+    echo "Installing vim-plug..."
     echo ""
     silent !\curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     let g:not_finish_vimplug = "yes"
     autocmd VimEnter * PlugInstall
 endif
 
-" shortcut leader=Space
-let mapleader="\<Space>"
+" Keymaps
+"" Set space to leader
+nmap <SPACE> <Nop>
+let mapleader=" "
 
-"" escape
-inoremap <silent> jj <ESC>
+"" Set jj to scape
+imap <silent> jj <ESC>
 
-"" tab
-nnoremap tn :tabnew<CR>
-nnoremap th :tabnext<CR>
-nnoremap tl :tabprev<CR>
-nnoremap th :tabfirst<CR>
-nnoremap tk :tabnext<CR>
-nnoremap tj :tabprev<CR>
-nnoremap tl :tablast<CR>
-nnoremap tt :tabedit<Space>
-nnoremap tm :tabm<Space>
-nnoremap td :tabclose<CR>
+"" Tab
+nmap tn :tabnew<CR>
+nmap th :tabnext<CR>
+nmap tl :tabprev<CR>
+nmap th :tabfirst<CR>
+nmap tk :tabnext<CR>
+nmap tj :tabprev<CR>
+nmap tl :tablast<CR>
+nmap tt :tabedit<Space>
+nmap tm :tabm<Space>
+nmap td :tabclose<CR>
 
-"" ignore wrap
-nnoremap j gj
-nnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up> gk
+"" Ignore wrap
+nmap j gj
+nmap k gk
+nmap <Down> gj
+nmap <Up> gk
 
-"" yank to the end of current line
-nnoremap Y y$
+"" Yank to the end of current line
+nmap Y y$
 
-"" pbcopy for OSX copy/paste
-vmap <C-x> :!pbcopy<CR>
-vmap <C-c> :w !pbcopy<CR><CR>
-
-" plugin
+" Plugins
 call plug#begin(expand('~/.vim/plugged'))
 Plug 'mattn/vim-starwars'
 "" space + ne -> sidebar
@@ -56,7 +55,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'junegunn/vim-easy-align'
 "" space + qr -> exec script
 Plug 'thinca/vim-quickrun'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 "" gcc -> comment
 Plug 'tpope/vim-commentary'
 "" option bar
@@ -108,7 +107,7 @@ let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "ᐅ"
+imap <expr> <Tab> pumvisible() ? "\<C-n>" : "ᐅ"
 let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -140,7 +139,7 @@ let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 30
 let NERDTreeShowHidden=1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-nnoremap <Leader>dir :NERDTreeTabsToggle<CR>
+nmap <Leader>dir :NERDTreeTabsToggle<CR>
 autocmd BufWritePre * :FixWhitespace
 augroup NERD
     au!
@@ -149,8 +148,8 @@ augroup NERD
 augroup END
 
 "" quickrun
-nnoremap <Leader>go :QuickRun<CR>
-nnoremap <C-U>qr :QuickRun<CR>
+nmap <Leader>go :QuickRun<CR>
+nmap <C-U>qr :QuickRun<CR>
 let g:quickrun_config={'*': {'split': ''}}
 let g:quickrun_config.cpp = {
             \   'command': 'g++',
@@ -162,8 +161,8 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 "" vimshell
-"" nnoremap <Leader>sh :VimShellPop<CR>
-nnoremap <Leader>sh :vertical terminal<CR>
+"" nmap <Leader>sh :VimShellPop<CR>
+nmap <Leader>sh :vertical terminal<CR>
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt =  '$ '
 
@@ -232,8 +231,8 @@ endif
 "" xaml
 augroup MyXML
     autocmd!
-    autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
-    autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
+    autocmd Filetype xml imap <buffer> </ </<C-x><C-o>
+    autocmd Filetype html imap <buffer> </ </<C-x><C-o>
 augroup END
 
 "" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
