@@ -9,6 +9,7 @@ if [ -f "${HOME}/.zshrc.addon" ]; then
 fi
 
 # Aliases
+alias watch='watch '
 alias k='kubectl'
 alias awsp='source _awsp'
 alias g='git'
