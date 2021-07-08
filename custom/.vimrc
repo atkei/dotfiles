@@ -26,8 +26,6 @@ imap <silent> jj <ESC>
 
 "" Tab
 nmap tn :tabnew<CR>
-nmap th :tabnext<CR>
-nmap tl :tabprev<CR>
 nmap th :tabfirst<CR>
 nmap tk :tabnext<CR>
 nmap tj :tabprev<CR>
