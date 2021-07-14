@@ -94,13 +94,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # kubectl
-if command -v kubectl 1>/dev/null 2>&1; then
-    [[ /bin/kubectl ]] && source <(kubectl completion zsh)
-    [ ! -f ~/.kubectl_aliases ] && curl -O https://raw.githubusercontent.com/ahmetb/kubectl-alias/master/.kubectl_aliases
-    [ -f ~/.kubectl_aliases ] && source <(cat ~/.kubectl_aliases | sed -r 's/(kubectl.*) --watch/watch \1/g')
-fi
-
-function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+complete -F __start_kubectl k
 
 # Docker rootless mode
 # https://docs.docker.com/engine/security/rootless/
