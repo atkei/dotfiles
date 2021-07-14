@@ -96,6 +96,10 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # kubectl
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 complete -F __start_kubectl k
+autoload -U colors; colors
+[ ! -f ${HOME}/zsh-kubectl-prompt/kubectl.zsh ] && git clone git@github.com:superbrothers/zsh-kubectl-prompt.git
+[ -f ${HOME}/zsh-kubectl-prompt/kubectl.zsh ] && source ${HOME}/zsh-kubectl-prompt/kubectl.zsh
+RPROMPT='%{$fg[cyan]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 
 # Docker rootless mode
 # https://docs.docker.com/engine/security/rootless/
