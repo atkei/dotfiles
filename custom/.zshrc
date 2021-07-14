@@ -3,7 +3,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
     source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Add-ons rely on environemnts
+# Create add-ons for specific env as needed
 if [ -f "${HOME}/.zshrc.addon" ]; then
     source "${HOME}/.zshrc.addon"
 fi
@@ -61,14 +61,12 @@ alias zmv='noglob zmv -W'
 uenc() {echo $1 | nkf -WwMQ | sed 's/=$//g' | tr = % | tr -d '\n'}
 
 # direnv
-if command -v direnv 1>/dev/null 2>&1; then
-    eval "$(direnv hook zsh)"
-fi
+[[ $commands[direnv] ]] && eval "$(direnv hook zsh)"
 
 # pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
+if [ -d "${HOME}/.pyenv" ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
 fi
 
@@ -77,11 +75,13 @@ fi
 export PIPENV_VENV_IN_PROJECT=true
 
 # goenv
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-if command -v goenv 1>/dev/null 2>&1; then
+if [ -d "${HOME}/.goenv" ]; then
+    export GOENV_ROOT="$HOME/.goenv"
+    export PATH="$GOENV_ROOT/bin:$PATH"
     eval "$(goenv init -)"
 fi
+
+# Go
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 
@@ -94,22 +94,24 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # kubectl
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
-complete -F __start_kubectl k
-autoload -U colors; colors
-[ ! -f ${HOME}/zsh-kubectl-prompt/kubectl.zsh ] && git clone https://github.com/superbrothers/zsh-kubectl-prompt.git
-[ -f ${HOME}/zsh-kubectl-prompt/kubectl.zsh ] && source ${HOME}/zsh-kubectl-prompt/kubectl.zsh
-RPROMPT='%{$fg[cyan]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+if [[ $commands[kubectl] ]] then;
+    source <(kubectl completion zsh)
+    complete -F __start_kubectl k
+
+    autoload -U colors; colors
+    [ ! -d "${HOME}/zsh-kubectl-prompt" ] && git clone https://github.com/superbrothers/zsh-kubectl-prompt.git
+    [ -s "${HOME}/zsh-kubectl-prompt/kubectl.zsh" ] && source ${HOME}/zsh-kubectl-prompt/kubectl.zsh
+    RPROMPT='%{$fg[cyan]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+fi
 
 # Docker rootless mode
 # https://docs.docker.com/engine/security/rootless/
-if [[ "$(systemctl --user is-active docker.service)" = "active" ]]; then
-    export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
-fi
+[[ "$(systemctl --user is-active docker.service)" = "active" ]] && export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 # Flutter
 # https://flutter.dev/docs/get-started/install/linux#install-flutter-manuallyexport
-PATH="$PATH:${HOME}/flutter/bin"
+# [ ! -d "${HOME}/flutter" ] && git clone https://github.com/flutter/flutter.git -b stable
+[ -d "${HOME}/flutter" ] && PATH="$PATH:${HOME}/flutter/bin"
 
 # WSL
 if uname -r | grep -i 'microsoft' 1>/dev/null 2>&1; then
