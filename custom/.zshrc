@@ -102,8 +102,11 @@ fi
 
 function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
 
-# Rootless mode of Docker
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+# Docker rootless mode
+# https://docs.docker.com/engine/security/rootless/
+if [[ "$(systemctl --user is-active docker.service)" = "active" ]]; then
+    export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+fi
 
 # Flutter
 # https://flutter.dev/docs/get-started/install/linux#install-flutter-manuallyexport
