@@ -19,6 +19,7 @@ alias v='vim'
 alias vza='vim ~/.zshrc.addon'
 alias vz='cd ~/github/atktng/dotfiles && vim custom/.zshrc'
 alias soz='source ~/.zshrc'
+alias sot='tmux source ~/.tmux.conf'
 alias c='cdr'
 alias h='fc -lt "%F %T" 1'
 alias cp='cp -i'
@@ -56,6 +57,9 @@ zstyle ":chpwd:*" recent-dirs-default true
 # zmv
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
+
+# tmux-plugins
+[[ ! -d "${HOME}/.tmux/plugins/tpm" ]] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # URL encode
 uenc() {echo $1 | nkf -WwMQ | sed 's/=$//g' | tr = % | tr -d '\n'}
@@ -122,4 +126,3 @@ if uname -r | grep -i 'microsoft' 1>/dev/null 2>&1; then
     # cd $HOME/win_bin && ln -s /path/to/windows_command
     export PATH=$PATH:$HOME/win_bin
 fi
-
