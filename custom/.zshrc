@@ -1,11 +1,9 @@
+# Enable systemd in WSL
+[[ "`ps -eo pid,cmd | grep systemd | grep -v -e grep -e systemd- | sort -n -k 1 | awk 'NR==1 { print $1 }'`" != "1" ]] && genie -s
+
 # prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
     source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-# Create add-ons for specific env as needed
-if [ -f "${HOME}/.zshrc.addon" ]; then
-    source "${HOME}/.zshrc.addon"
 fi
 
 # Aliases
@@ -46,7 +44,12 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt hist_ignore_dups
+setopt hist_ignore_all_dups
 setopt share_history
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
 
 # cdr
 autoload -Uz add-zsh-hook
@@ -114,15 +117,7 @@ fi
 
 # Flutter
 # https://flutter.dev/docs/get-started/install/linux#install-flutter-manuallyexport
-# [ ! -d "${HOME}/flutter" ] && git clone https://github.com/flutter/flutter.git -b stable
 [ -d "${HOME}/flutter" ] && PATH="$PATH:${HOME}/flutter/bin"
 
-# WSL
-if uname -r | grep -i 'microsoft' 1>/dev/null 2>&1; then
-    # X Server's location (https://github.com/microsoft/WSL/issues/4106#issuecomment-501885675)
-    export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
-
-    # appendWindowsPath=false (https://docs.microsoft.com/en-us/windows/wsl/wsl-config)
-    # cd $HOME/win_bin && ln -s /path/to/windows_command
-    export PATH=$PATH:$HOME/win_bin
-fi
+# Private settings that can not be published in the repository
+[[ -f "${HOME}/.zshrc.private" ]] && source "${HOME}/.zshrc.private"
