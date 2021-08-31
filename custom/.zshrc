@@ -1,5 +1,5 @@
-# Enable systemd in WSL
-[[ "`ps -eo pid,cmd | grep systemd | grep -v -e grep -e systemd- | sort -n -k 1 | awk 'NR==1 { print $1 }'`" != "1" ]] && genie -s
+# Enable systemd in WSL2
+[[ -n "$WSL_DISTRO_NAME" && "`ps -eo pid,cmd | grep systemd | grep -v -e grep -e systemd- | sort -n -k 1 | awk 'NR==1 { print $1 }'`" != "1" ]] && genie -s
 
 # prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
