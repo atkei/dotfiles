@@ -1,5 +1,5 @@
 # Enable systemd in WSL2
-[[ -n "$WSL_DISTRO_NAME" && "`ps -eo pid,cmd | grep systemd | grep -v -e grep -e systemd- | sort -n -k 1 | awk 'NR==1 { print $1 }'`" != "1" ]] && genie -s
+[[ -n "${WSL_DISTRO_NAME}" && `command -v genie` && "`ps -eo pid,cmd | grep systemd | grep -v -e grep -e systemd- | sort -n -k 1 | awk 'NR==1 { print $1 }'`" != "1" ]] && genie -s
 
 # prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -68,7 +68,7 @@ alias zmv='noglob zmv -W'
 uenc() {echo $1 | nkf -WwMQ | sed 's/=$//g' | tr = % | tr -d '\n'}
 
 # direnv
-[[ $commands[direnv] ]] && eval "$(direnv hook zsh)"
+[[ `command -v direnv` ]] && eval "$(direnv hook zsh)"
 
 # pyenv
 if [ -d "${HOME}/.pyenv" ]; then
