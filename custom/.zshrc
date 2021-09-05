@@ -30,6 +30,8 @@ alias -g L='| less'
 alias dcu='docker-compose up -d'
 alias dcd='docker-compose down'
 
+url-encode() {echo $1 | nkf -WwMQ | sed 's/=$//g' | tr = % | tr -d '\n'}
+
 # Vim keybind
 bindkey -v
 
@@ -60,12 +62,6 @@ zstyle ":chpwd:*" recent-dirs-default true
 # zmv
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
-
-# tmux-plugins
-[[ ! -d "${HOME}/.tmux/plugins/tpm" ]] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# URL encode
-uenc() {echo $1 | nkf -WwMQ | sed 's/=$//g' | tr = % | tr -d '\n'}
 
 # direnv
 [[ `command -v direnv` ]] && eval "$(direnv hook zsh)"
@@ -100,14 +96,19 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# kubectl
+# kubectl autocomplete
+# https://kubernetes.io/docs/reference/kubectl/cheatsheet/#zsh
 if [[ $commands[kubectl] ]] then;
     source <(kubectl completion zsh)
     complete -F __start_kubectl k
 
+fi
+
+# zsh-kubectl-prompt
+# https://github.com/superbrothers/zsh-kubectl-prompt
+if [[ -d "${HOME}/zsh-kubectl-prompt" ]] then;
     autoload -U colors; colors
-    [ ! -d "${HOME}/zsh-kubectl-prompt" ] && git clone https://github.com/superbrothers/zsh-kubectl-prompt.git
-    [ -s "${HOME}/zsh-kubectl-prompt/kubectl.zsh" ] && source ${HOME}/zsh-kubectl-prompt/kubectl.zsh
+    source ${HOME}/zsh-kubectl-prompt/kubectl.zsh
     RPROMPT='%{$fg[cyan]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 fi
 
