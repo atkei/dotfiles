@@ -1,0 +1,19 @@
+source ~/.keymaps.vim
+
+nnoremap <Leader>e :action ActivateProjectToolWindow<CR>
+nnoremap <Leader>t :action ActivateTerminalToolWindow<CR>
+" HideActiveWindow: <S-Esc>
+
+nnoremap ,a :action GotoAction<CR>
+
+nnoremap ,c :action FileStructurePopup<CR>
+nnoremap ,p :action FindInPath<CR>
+nnoremap ,f :action GotoFile<CR>
+
+nnoremap ,d :action GotoDeclaration<CR>
+nnoremap ,s :action GotoSuperMethod<CR>
+nnoremap ,i :action GotoImplementation<CR>
+nnoremap ,u :action FindUsages<CR>
+
+nnoremap ,r :action RenameElement<CR>
+nnoremap ,j :action QuickJavaDoc<CR>

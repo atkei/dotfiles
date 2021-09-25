@@ -1,0 +1,45 @@
+[core]
+  editor = nvim
+
+[color]
+  ui = auto
+
+[diff]
+  tool = nvimdiff
+
+[difftool]
+  prompt = false
+
+[difftool "nvimdiff"]
+  cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
+
+[merge]
+  tool = nvimdiff
+
+[mergetool]
+  keepBackup = false
+
+[mergetool "nvimdiff"]
+  # 3-way merge
+  cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
+
+[push]
+  default = simple
+
+[alias]
+  st = status -s --no-untracked-files
+  lg = log --graph --decorate --date-order --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(bold blue)%h%Creset %C(black bold)%ad%Creset %s %C(bold blue)<%an>%Creset%C(auto)%d'
+  lga = log --graph --decorate --all --date-order --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(bold blue)%h%Creset %C(black bold)%ad%Creset %s %C(bold blue)<%an>%Creset%C(auto)%d'
+
+[includeIf "gitdir:~/github/atktng/"]
+  path = ~/github/atktng/.gitconfig
+
+[includeIf "gitdir:~/gitlab/work/"]
+  path = ~/gitlab/work/.gitconfig
+
+[includeIf "gitdir:~/gitlab/work2/"]
+  path = ~/gitlab/work2/.gitconfig
+
+[includeIf "gitdir:~/bitbucket/work/"]
+  path = ~/bitbucket/work/.gitconfig
+
