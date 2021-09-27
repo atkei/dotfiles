@@ -47,3 +47,6 @@ hook_add = '''
       \ 'resume': 1,
       \ })
 '''
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
