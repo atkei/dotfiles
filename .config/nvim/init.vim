@@ -58,8 +58,9 @@ set autoindent
 set smartindent
 set number
 
-" pyenv
-let g:python3_host_prog = $PYENV_ROOT.'/shims/python'
+" Python3 support
+" pyenv virtualenv 3.x.y nvim3
+let g:python3_host_prog = $PYENV_ROOT.'/versions/nvim3/bin/python'
 
 augroup vimrc 
   autocmd!
