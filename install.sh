@@ -33,7 +33,7 @@ function mklinks() {
 if [ "${1}" == "--force" -o "${1}" == "-f" ]; then
   mklinks
 else
-  read -p "Existing files may be overriten. Are you sure? (y/n)"
+  read -p "Existing files may be overwritten. Are you sure? (y/n)"
   echo ""
   if [[ "${REPLY}" =~ ^[yY]$ ]]; then
     mklinks
