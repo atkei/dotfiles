@@ -18,6 +18,10 @@ nnoremap <Leader>aqq :qa!<CR>
 " Clear highlight
 nnoremap <Leader>nn :noh<CR>
 
+" Spell
+nnoremap <Leader>ss :set spell spelllang=en_us<CR>
+nnoremap <Leader>us :set nospell<CR>
+
 " Tab
 nmap tn :tabnew<CR>
 nmap th :tabfirst<CR>
