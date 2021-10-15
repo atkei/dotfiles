@@ -43,3 +43,5 @@
 [includeIf "gitdir:~/bitbucket/work/"]
   path = ~/bitbucket/work/.gitconfig
 
+[credential "https://github.com"]
+	helper = !/usr/bin/gh auth git-credential
