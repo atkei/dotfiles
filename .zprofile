@@ -24,7 +24,7 @@ fi
 
 # Flutter
 # https://flutter.dev/docs/get-started/install/linux#install-flutter-manuallyexport
-[ -d "${HOME}/flutter" ] && PATH="$PATH:${HOME}/flutter/bin"
+[ -d "${HOME}/flutter" ] && export PATH="$PATH:${HOME}/flutter/bin"
 
 # krew
 [ -d "${HOME}/.krew" ] && export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
