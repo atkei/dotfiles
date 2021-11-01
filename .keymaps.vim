@@ -1,43 +1,43 @@
 " Set space to leader
-nmap <SPACE> <Nop>
+nn <SPACE> <Nop>
 let mapleader=" "
 
 " Set jj to escape
-imap <silent> jj <ESC>
+ino <silent> jj <ESC>
 
 " Go to Terminal Normal mode
-tnoremap <A-j> <C-\><C-n>
+tno <A-j> <C-\><C-n>
 
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>qq :q!<CR>
-nnoremap <Leader>wq :wq<CR>
-
-nnoremap <Leader>awq :wqa<CR>
-nnoremap <Leader>aqq :qa!<CR>
+" Save and close
+nn <Leader>w :w<CR>
+nn <Leader>qq :q!<CR>
+nn <Leader>wq :wq<CR>
+nn <Leader>awq :wqa<CR>
+nn <Leader>aqq :qa!<CR>
 
 " Clear highlight
-nnoremap <Leader>nn :noh<CR>
+nn <Leader>nn :noh<CR>
 
 " Spell
-nnoremap <Leader>ss :set spell spelllang=en_us<CR>
-nnoremap <Leader>us :set nospell<CR>
+nn <Leader>ss :set spell spelllang=en_us<CR>
+nn <Leader>us :set nospell<CR>
 
 " Buffer
 nn <silent> <C-j> :bprev<CR>
 nn <silent> <C-k> :bnext<CR>
 
 " Tab
-nmap tn :tabnew<CR>
-nmap th :tabfirst<CR>
-nmap tk :tabnext<CR>
-nmap tj :tabprev<CR>
-nmap tl :tablast<CR>
-nmap tt :tabedit<Space>
-nmap tm :tabm<Space>
-nmap td :tabclose<CR>
+nn tn :tabnew<CR>
+nn th :tabfirst<CR>
+nn tk :tabnext<CR>
+nn tj :tabprev<CR>
+nn tl :tablast<CR>
+nn tt :tabedit<Space>
+nn tm :tabm<Space>
+nn td :tabclose<CR>
 
 " Ignore wrap
-nmap j gj
-nmap k gk
-nmap <Down> gj
-nmap <Up> gk
+nn j gj
+nn k gk
+nn <Down> gj
+nn <Up> gk
