@@ -22,6 +22,10 @@ nnoremap <Leader>nn :noh<CR>
 nnoremap <Leader>ss :set spell spelllang=en_us<CR>
 nnoremap <Leader>us :set nospell<CR>
 
+" Buffer
+nn <silent> <C-j> :bprev<CR>
+nn <silent> <C-k> :bnext<CR>
+
 " Tab
 nmap tn :tabnew<CR>
 nmap th :tabfirst<CR>
