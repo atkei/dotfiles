@@ -1,12 +1,12 @@
-typeset -gU path cdpath fpath mailpath
-typeset -gU PATH CDPATH FPATH MAILPATH
-
-autoload -Uz compinit && compinit
-
 # prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
+
+typeset -gU path cdpath fpath mailpath
+typeset -gU PATH CDPATH FPATH MAILPATH
+
+autoload -Uz compinit && compinit
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
