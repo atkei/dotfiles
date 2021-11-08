@@ -29,8 +29,8 @@
 
 [alias]
   st = status -s --no-untracked-files
-  lg = log --graph --decorate --date-order --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(bold blue)%h%Creset %C(black bold)%ad%Creset %s %C(bold blue)<%an>%Creset%C(auto)%d'
-  lga = log --graph --decorate --all --date-order --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(bold blue)%h%Creset %C(black bold)%ad%Creset %s %C(bold blue)<%an>%Creset%C(auto)%d'
+  lg = log --graph --decorate --date-order --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(bold blue)%h%Creset %C(bold green)%ad%Creset %s %C(bold blue)<%an>%Creset%C(auto)%d'
+  lga = log --graph --decorate --all --date-order --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(bold blue)%h%Creset %C(bold green)%ad%Creset %s %C(bold blue)<%an>%Creset%C(auto)%d'
 
 [credential "https://github.com"]
   helper = !/usr/bin/gh auth git-credential
