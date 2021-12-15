@@ -51,7 +51,7 @@ setopt no_list_beep
 cdpath=(
   ${HOME}/github/`whoami`
   ${HOME}/gitlab/work
-  ${HOME}/bitbucket/work
+  ${HOME}/gitlab/work2
   ${cdpath}
 )
 
