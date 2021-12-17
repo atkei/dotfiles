@@ -59,7 +59,7 @@ set smartindent
 set number
 
 set laststatus=2
-set statusline=%!getcwd()
+set statusline+=%F
 
 " Python3 support
 " pyenv virtualenv 3.x.y nvim3
