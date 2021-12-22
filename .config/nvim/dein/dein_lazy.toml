@@ -20,3 +20,13 @@ hook_source = '''
   autocmd vimrc User FloatermOpen tnoremap <buffer> <silent> <Leader>kk <C-\><C-n>:FloatermNext<CR>
   autocmd vimrc QuitPre * FloatermKill!
 '''
+
+[[plugins]]
+repo = 'iamcco/markdown-preview.nvim'
+on_ft = ['markdown', 'pandoc.markdown', 'rmd']
+build = 'sh -c "cd app && ./install.sh"'
+hook_source = '''
+  nmap <Leader>m <Plug>MarkdownPreview
+  nmap <Leader>ms <Plug>MarkdownPreviewStop
+  nmap <Leader>mt <Plug>MarkdownPreviewToggle
+'''
