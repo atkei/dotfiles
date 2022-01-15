@@ -64,3 +64,7 @@ hook_add = '''
   nnoremap <silent> <Leader>r :Rg<CR>
 '''
 
+[[plugins]]
+repo = "neoclide/coc.nvim"
+merge = 0
+rev = "release"
