@@ -109,7 +109,10 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# kubectl autocomplete
+# awscli auto-completion
+complete -C '/usr/local/bin/aws_completer' aws
+
+# kubectl auto-completion
 # https://kubernetes.io/docs/reference/kubectl/cheatsheet/#zsh
 if [[ $commands[kubectl] ]] then;
   source <(kubectl completion zsh)
