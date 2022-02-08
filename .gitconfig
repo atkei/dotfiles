@@ -35,8 +35,8 @@
 [credential "https://github.com"]
   helper = !/usr/bin/gh auth git-credential
 
-[includeIf "gitdir:~/github/atktng/"]
-  path = ~/github/atktng/.gitconfig
+[includeIf "gitdir:~/github/atken/"]
+  path = ~/github/atken/.gitconfig
 
 [includeIf "gitdir:~/gitlab/work/"]
   path = ~/gitlab/work/.gitconfig
