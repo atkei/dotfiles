@@ -27,6 +27,8 @@ Install the following in order from the top.
 - [Docker](./docs/docker.md)
 - [Kubernetes](./docs/kubernetes.md)
 - [Helm](./docs/helm.md)
+- [Hugo](./docs/hugo.md)
+- [Flutter](./docs/flutter.md)
 
 Run [`install.sh`](install.sh) to install dotfiles.
 
