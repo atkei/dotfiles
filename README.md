@@ -14,7 +14,6 @@ Install the following in order from the top.
 - [Zsh](./docs/zsh.md)
 - [Tmux](./docs/tmux.md)
 - [fzf](./docs/fzf.md)
-- [SDKMAN!](./docs/sdkman.md)
 - [Java](./docs/java.md)
 - [Python](./docs/python.md)
 - [Node.js](./docs/nodejs.md)
