@@ -8,3 +8,6 @@ https://docs.docker.com/engine/install/ubuntu/
 
 https://docs.docker.com/engine/security/rootless/
 
+## Install Docker Compose
+
+https://docs.docker.com/compose/install/
