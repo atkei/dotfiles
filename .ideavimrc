@@ -17,3 +17,6 @@ nnoremap ,u :action FindUsages<CR>
 
 nnoremap ,r :action RenameElement<CR>
 nnoremap ,j :action QuickJavaDoc<CR>
+
+set visualbell
+set noerrorbells
