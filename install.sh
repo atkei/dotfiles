@@ -27,6 +27,7 @@ function mklinks() {
   mklink ".keymaps.vim"
   mklink ".ideavimrc"
   mklink ".config/nvim" ${CONFDIR}
+  mklink ".config/git" ${CONFDIR}
   echo "Done."
 }
 
