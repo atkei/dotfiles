@@ -2,10 +2,10 @@
 
 Dotfiles with Linux machine setup procedure.
 
-## Checked Envinronments
+## Checked Environments
 
-- Ubuntu 20.04
-- Pop!\_OS 21.10
+- Ubuntu 22.04
+- Pop!\_OS 22.04
 
 ## Setup Procedure
 
@@ -26,6 +26,7 @@ Install the following in order from the top.
 - [Docker](./docs/docker.md)
 - [Kubernetes](./docs/kubernetes.md)
 - [Helm](./docs/helm.md)
+- [Terraform](./docs/terraform.md)
 - [Hugo](./docs/hugo.md)
 - [Flutter](./docs/flutter.md)
 

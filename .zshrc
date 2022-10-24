@@ -32,6 +32,7 @@ alias -g L='| less'
 alias dcu='docker-compose up -d'
 alias dcd='docker-compose down'
 alias zmv='noglob zmv -W'
+alias tf='terraform'
 
 if [[ `command -v nvim` ]]; then
   alias v='nvim'
@@ -130,6 +131,9 @@ fi
 # Docker rootless mode
 # https://docs.docker.com/engine/security/rootless/
 [[ "$(systemctl --user is-active docker.service 2> /dev/null)" = "active" ]] && export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
+# tfenv
+export PATH="$HOME/.tfenv/bin:$PATH"
 
 # Private settings that can not be published in the repository
 [[ -f "${HOME}/.zshrc.private" ]] && source "${HOME}/.zshrc.private"
