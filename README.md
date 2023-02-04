@@ -19,7 +19,6 @@ Install the following in order from the top.
 - [Node.js](./docs/nodejs.md)
 - [Golang](./docs/golang.md)
 - [AWS](./docs/aws.md)
-- [Gitconfig](./docs/gitconfig.md)
 - [Github](./docs/github.md)
 - [Neovim](./docs/nvim.md)
 - [Jetbrains](./docs/jetbrains.md)
@@ -36,3 +35,7 @@ Run [`install.sh`](install.sh) to install dotfiles.
 ./install.sh
 ```
 
+Create the followings and add private settings as needed.
+
+- `${HOME}/.zshrc.private`
+- `${HOME}/.gitconfig.private`

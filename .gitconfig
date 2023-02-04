@@ -35,15 +35,6 @@
 [credential "https://github.com"]
   helper = !/usr/bin/gh auth git-credential
 
-[includeIf "gitdir:~/github/atken/"]
-  path = ~/github/atken/.gitconfig
-
-[includeIf "gitdir:~/gitlab/work/"]
-  path = ~/gitlab/work/.gitconfig
-
-[includeIf "gitdir:~/gitlab/work2/"]
-  path = ~/gitlab/work2/.gitconfig
-
-[includeIf "gitdir:~/bitbucket/work/"]
-  path = ~/bitbucket/work/.gitconfig
-
+# Private settings that can not be published in the repository
+[includeIf "gitdir:~/"]
+  path = ~/.gitconfig.private

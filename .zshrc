@@ -48,14 +48,6 @@ url-encode() {echo $1 | nkf -WwMQ | sed 's/=$//g' | tr = % | tr -d '\n'}
 setopt no_beep
 setopt no_list_beep
 
-# Base directory for cd
-cdpath=(
-  ${HOME}/github/`whoami`
-  ${HOME}/gitlab/work
-  ${HOME}/gitlab/work2
-  ${cdpath}
-)
-
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
