@@ -1,39 +1,52 @@
 source ~/.keymaps.vim
 
-"dein Scripts-----------------------------
-if &compatible
-  set nocompatible               " Be iMproved
+set nocompatible
+
+" Dein.vim installation
+let $CACHE = expand('~/.cache')
+if !isdirectory($CACHE)
+  call mkdir($CACHE, 'p')
+endif
+if &runtimepath !~# '/dein.vim'
+  let s:dein_dir = fnamemodify('dein.vim', ':p')
+  if !isdirectory(s:dein_dir)
+    let s:dein_dir = $CACHE . '/dein/repos/github.com/Shougo/dein.vim'
+    if !isdirectory(s:dein_dir)
+      execute '!git clone https://github.com/Shougo/dein.vim' s:dein_dir
+    endif
+  endif
+  execute 'set runtimepath^=' . substitute(fnamemodify(s:dein_dir, ':p') , '[/\\]$', '', '')
 endif
 
-set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
+" Dein.vim configuration
+let s:dein_base = '~/.cache/dein/'
+let s:dein_src = '~/.cache/dein/repos/github.com/Shougo/dein.vim'
 
-let s:dein_dir = expand('$HOME/.cache/dein')
+execute 'set runtimepath+=' . s:dein_src
 
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
-  
-  " Let dein manage dein
-  call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
+call dein#begin(s:dein_base)
+call dein#add(s:dein_src)
 
-  let s:toml_dir  = expand('$HOME/.config/nvim/dein')
-  let s:toml      = s:toml_dir . '/dein.toml'
-  let s:lazy_toml = s:toml_dir . '/dein_lazy.toml' 
+let s:toml_dir  = expand('$HOME/.config/nvim/dein')
+let s:toml      = s:toml_dir . '/dein.toml'
+let s:lazy_toml = s:toml_dir . '/dein_lazy.toml'
 
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+call dein#load_toml(s:toml,      {'lazy': 0})
+call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
-  call dein#end()
-  call dein#save_state()
-endif
-
-filetype plugin indent on
-syntax enable
+call dein#end()
+call dein#save_state()
 
 " Install not installed plugins on startup.
 if dein#check_install()
   call dein#install()
 endif
-"End dein Scripts-------------------------
+
+filetype plugin indent on
+
+if has('syntax')
+  syntax on
+endif
 
 "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
 "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
@@ -42,7 +55,6 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-syntax on
 colorscheme onedark
 
 set encoding=utf-8

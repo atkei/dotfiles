@@ -19,6 +19,11 @@ function mklink() {
 }
 
 function mklinks() {
+  if [ ! -d "$CONFDIR" ]; then
+    mkdir "$CONFDIR"
+    echo "Created: ${CONFDIR}"
+  fi
+
   mklink ".zshrc"
   mklink ".zprofile"
   mklink ".zpreztorc"
@@ -28,7 +33,6 @@ function mklinks() {
   mklink ".ideavimrc"
   mklink ".config/nvim" ${CONFDIR}
   mklink ".config/git" ${CONFDIR}
-  echo "Done."
 }
 
 if [ "${1}" == "--force" -o "${1}" == "-f" ]; then
@@ -40,6 +44,9 @@ else
     mklinks
   else
     echo "Aborted."
+    exit 0
   fi
 fi
 
+echo Done.
+exit 0
