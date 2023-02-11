@@ -280,7 +280,7 @@ minikube completion zsh | sudo tee /usr/local/share/zsh/site-functions/_minikube
 source ~/.zshrc
 ```
 
-### Enable cgroup v2
+### Enabling cgroup v2
 
 Enable as needed for minikube with rootless docker driver.
 
@@ -290,7 +290,7 @@ Add the following string to the `GRUB_CMDLINE_LINUX` line in `/etc/default/grub`
 For example,
 
 ```
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash systemd unified_cgroup_hierarchy=1"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash systemd.unified_cgroup_hierarchy=1"
 ```
 
 Run the following then reboot.
