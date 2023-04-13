@@ -243,27 +243,6 @@ Ref:
 - https://docs.docker.com/engine/install/ubuntu/
 - https://docs.docker.com/engine/security/rootless/#install
 
-## Install Kubectl
-
-```sh
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
-echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-source ~/.zshrc
-```
-
-Ref: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
-
-## Install zsh-kubectl-prompt
-
-```sh
-git clone https://github.com/superbrothers/zsh-kubectl-prompt ~/zsh-kubectl-prompt
-source ~/.zshrc
-```
-
-Ref: https://github.com/superbrothers/zsh-kubectl-prompt#usage
-
 ## Install Minikube
 
 Install.
@@ -326,12 +305,43 @@ Ref:
 - https://rootlesscontaine.rs/getting-started/common/cgroup2/
 - https://www.atken.dev/en/post/kind-rootless-kernelstub/
 
+## Install asdf
+
+```sh
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
+source ~/.zshrc
+```
+
+Ref: https://asdf-vm.com/guide/getting-started.html
+
+## Install Kubectl
+
+```sh
+asdf plugin-add kubectl
+asdf install kubectl latest
+asdf global kubectl $INSTALLED_VERSION
+source ~/.zshrc
+```
+
+Ref: https://github.com/asdf-community/asdf-kubectl
+
+## Install zsh-kubectl-prompt
+
+```sh
+git clone https://github.com/superbrothers/zsh-kubectl-prompt ~/zsh-kubectl-prompt
+source ~/.zshrc
+```
+
+Ref: https://github.com/superbrothers/zsh-kubectl-prompt#usage
+
+
 ## Install Helm
 
 ```sh
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-chmod 700 get_helm.sh
-./get_helm.sh
+asdf plugin-add helm
+asdf install helm latest
+asdf global helm $INSTALLED_VERSION
+source ~/.zshrc
 ```
 
 Enable completion.
@@ -342,14 +352,16 @@ source ~/.zshrc
 ```
 
 Ref:
-- https://helm.sh/docs/intro/install/
+- https://github.com/Antiarchitect/asdf-helm
 - https://helm.sh/docs/helm/helm_completion_zsh/
 
-## Install tfenv
+## Install Terraform
 
 ```sh
-git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv
+asdf plugin-add terraform
+asdf install terraform latest
+asdf global terraform $INSTALLED_VERSION
 source ~/.zshrc
 ```
 
-Ref: https://github.com/tfutils/tfenv#installation
+Ref: https://github.com/asdf-community/asdf-hashicorp
