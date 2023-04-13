@@ -8,7 +8,6 @@ nnoremap ,a :action GotoAction<CR>
 
 nnoremap ,c :action FileStructurePopup<CR>
 nnoremap ,p :action FindInPath<CR>
-nnoremap ,f :action GotoFile<CR>
 
 nnoremap ,d :action GotoDeclaration<CR>
 nnoremap ,s :action GotoSuperMethod<CR>
@@ -17,6 +16,10 @@ nnoremap ,u :action FindUsages<CR>
 
 nnoremap ,r :action RenameElement<CR>
 nnoremap ,j :action QuickJavaDoc<CR>
+
+nnoremap ,o :action OptimizeImports<CR>
+nnoremap ,f :action ReformatCode<CR>
+
 
 set visualbell
 set noerrorbells
