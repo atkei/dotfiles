@@ -102,13 +102,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# asdf
-. "$HOME/.asdf/asdf.sh"
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-# initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
-
 # awscli auto-completion
 complete -C '/usr/local/bin/aws_completer' aws
 
@@ -127,13 +120,20 @@ if [[ -d "${HOME}/zsh-kubectl-prompt" ]] then;
   RPROMPT='%{$fg[cyan]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 fi
 
+# tkn auto-completion
+source <(tkn completion zsh)
+
+# asdf
+. "$HOME/.asdf/asdf.sh"
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+
+# Terraform auto-completion (asdf)
+complete -o nospace -C "$HOME/.asdf/shims/terraform" terraform
+
 # Docker rootless mode
 # https://docs.docker.com/engine/security/rootless/
 [[ "$(systemctl --user is-active docker.service 2> /dev/null)" = "active" ]] && export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
-
-# Terraform auto-completion
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C "$HOME/.asdf/shims/terraform" terraform
 
 # Private settings that can not be published in the repository
 [[ -f "${HOME}/.zshrc.private" ]] && source "${HOME}/.zshrc.private"
