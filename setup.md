@@ -47,6 +47,12 @@ Rrf: https://github.com/tmux/tmux#installation
 
 ## Install Tmux Plugin Manager (TPM)
 
+When ubuntu22, need the following.
+
+```sh
+sudo apt install xsel
+```
+
 ```sh
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
