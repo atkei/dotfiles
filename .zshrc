@@ -6,6 +6,13 @@ fi
 typeset -gU path cdpath fpath mailpath
 typeset -gU PATH CDPATH FPATH MAILPATH
 
+# asdf
+if [[ -s $HOME/.asdf/asdf.sh ]]; then
+  . "$HOME/.asdf/asdf.sh"
+  # append completions to fpath
+  fpath=(${ASDF_DIR}/completions $fpath)
+fi
+
 autoload -Uz compinit && compinit
 
 # fzf
@@ -121,15 +128,14 @@ if [[ -d "${HOME}/zsh-kubectl-prompt" ]] then;
 fi
 
 # tkn auto-completion
-source <(tkn completion zsh)
-
-# asdf
-. "$HOME/.asdf/asdf.sh"
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
+if [[ $commands[tkn] ]] then;
+  source <(tkn completion zsh)
+fi
 
 # Terraform auto-completion (asdf)
-complete -o nospace -C "$HOME/.asdf/shims/terraform" terraform
+if [[ $commands[terraform] ]] then;
+  complete -o nospace -C "$HOME/.asdf/shims/terraform" terraform
+fi 
 
 # Docker rootless mode
 # https://docs.docker.com/engine/security/rootless/
