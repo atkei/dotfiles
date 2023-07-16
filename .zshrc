@@ -137,6 +137,11 @@ if [[ $commands[terraform] ]] then;
   complete -o nospace -C "$HOME/.asdf/shims/terraform" terraform
 fi 
 
+# Azure CLI auto-completion
+if [[ $commands[az] ]] && [[ -f "$HOME/az.completion" ]] then;
+  source $HOME/az.completion
+fi
+
 # Docker rootless mode
 # https://docs.docker.com/engine/security/rootless/
 [[ "$(systemctl --user is-active docker.service 2> /dev/null)" = "active" ]] && export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
