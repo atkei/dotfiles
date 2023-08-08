@@ -66,8 +66,8 @@ Ref: https://github.com/tmux-plugins/tpm#installation
 ```sh
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 cd ~/.fzf
-git fetch all tags
-git checkout refs/tags/0.37.0
+git fetch --all --tags
+git checkout refs/tags/0.42.0
 ./install
 ...
 Do you want to enable fuzzy auto-completion? ([y]/n) y
