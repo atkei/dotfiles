@@ -6,13 +6,8 @@ fi
 typeset -gU path cdpath fpath mailpath
 typeset -gU PATH CDPATH FPATH MAILPATH
 
-# asdf
-if [[ -s $HOME/.asdf/asdf.sh ]]; then
-  . "$HOME/.asdf/asdf.sh"
-  # append completions to fpath
-  fpath=(${ASDF_DIR}/completions $fpath)
-fi
-
+# Completion
+autoload -U bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 
 # fzf
@@ -41,6 +36,7 @@ alias dcd='docker-compose down'
 alias zmv='noglob zmv -W'
 alias tf='terraform'
 
+# neovim/vim
 if [[ `command -v nvim` ]]; then
   alias v='nvim'
   alias vim='nvim'
@@ -85,32 +81,8 @@ bindkey '^@' fzf-cdr
 # direnv
 [[ `command -v direnv` ]] && eval "$(direnv hook zsh)"
 
-# pyenv
-if [ -d "${HOME}/.pyenv" ]; then
-   eval "$(pyenv init -)"
-fi
-
 # pipenv
 export PIPENV_VENV_IN_PROJECT=true
-
-# goenv
-if [ -d "${HOME}/.goenv" ]; then
-  eval "$(goenv init -)"
-  export PATH="$GOROOT/bin:$PATH"
-  export PATH="$PATH:$GOPATH/bin"
-fi
-
-# nvm
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# SDKMAN
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# awscli auto-completion
-complete -C '/usr/local/bin/aws_completer' aws
 
 # kubectl auto-completion
 # https://kubernetes.io/docs/reference/kubectl/cheatsheet/#zsh
@@ -132,10 +104,17 @@ if [[ $commands[tkn] ]] then;
   source <(tkn completion zsh)
 fi
 
-# Terraform auto-completion (asdf)
-if [[ $commands[terraform] ]] then;
-  complete -o nospace -C "$HOME/.asdf/shims/terraform" terraform
-fi 
+# JAVA_HOME (asdf)
+[ -s ~/.asdf/plugins/java/set-java-home.zsh ] && . ~/.asdf/plugins/java/set-java-home.zsh
+
+# FLUTTER_ROOT (asdf)
+[[ `command asdf where flutter` ]] && export FLUTTER_ROOT="$(asdf where flutter)"
+
+# AWS CLI completion (asdf)
+[ -s $HOME/.asdf/shims/aws_completer ] && complete -C '$HOME/.asdf/shims/aws_completer' aws
+
+# Terraform completion (asdf)
+[ -s $HOME/.asdf/shims/terraform ] && complete -o nospace -C "$HOME/.asdf/shims/terraform" terraform
 
 # Azure CLI auto-completion
 if [[ $commands[az] ]] && [[ -f "$HOME/az.completion" ]] then;
@@ -148,4 +127,3 @@ fi
 
 # Private settings that can not be published in the repository
 [[ -f "${HOME}/.zshrc.private" ]] && source "${HOME}/.zshrc.private"
-

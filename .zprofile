@@ -5,23 +5,6 @@ export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=less
 
-# pyenv
-if [ -d "${HOME}/.pyenv" ]; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init --path)"
-
-  if [ -d "${PYENV_ROOT}/plugins/pyenv-virtualenv" ]; then
-    eval "$(pyenv virtualenv-init -)"
-  fi
-fi
-
-# goenv
-if [ -d "${HOME}/.goenv" ]; then
-  export GOENV_ROOT="$HOME/.goenv"
-  export PATH="$GOENV_ROOT/bin:$PATH"
-fi
-
 # Flutter
 # https://flutter.dev/docs/get-started/install/linux#install-flutter-manuallyexport
 [ -d "${HOME}/flutter" ] && export PATH="$PATH:${HOME}/flutter/bin"
@@ -39,4 +22,20 @@ export LESS='-g -i -M -R -S -w -X -z-4'
 # Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
 if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+fi
+
+# Snap bin
+snap_bin_path="/snap/bin"
+if [ -n "${PATH##*${snap_bin_path}}" -a -n "${PATH##*${snap_bin_path}:*}" ]; then
+  export PATH=$PATH:${snap_bin_path}
+fi
+
+# Android tools
+export PATH=$PATH:"$HOME/Android/Sdk/platform-tools"
+
+# asdf completion
+# https://asdf-vm.com/guide/getting-started.html
+if [[ -s $HOME/.asdf/asdf.sh ]]; then
+  . "$HOME/.asdf/asdf.sh"
+  fpath=(${ASDF_DIR}/completions $fpath)
 fi

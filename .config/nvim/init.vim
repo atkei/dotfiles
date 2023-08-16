@@ -73,9 +73,8 @@ set number
 set laststatus=2
 set statusline+=%F
 
-" Python3 support
-" pyenv virtualenv 3.x.y nvim3
-let g:python3_host_prog = $PYENV_ROOT.'/versions/nvim3/bin/python'
+" Python3 support (asdf)
+let g:python3_host_prog = system('echo -n $(which python3)')
 
 augroup vimrc 
   autocmd!
