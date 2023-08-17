@@ -108,7 +108,7 @@ fi
 [ -s ~/.asdf/plugins/java/set-java-home.zsh ] && . ~/.asdf/plugins/java/set-java-home.zsh
 
 # FLUTTER_ROOT (asdf)
-[[ `command asdf where flutter` ]] && export FLUTTER_ROOT="$(asdf where flutter)"
+[[ $(asdf where flutter 2> /dev/null) ]] && export FLUTTER_ROOT="$(asdf where flutter)"
 
 # AWS CLI completion (asdf)
 [ -s $HOME/.asdf/shims/aws_completer ] && complete -C '$HOME/.asdf/shims/aws_completer' aws
