@@ -1,2 +1,6 @@
 .netrwhist
 .config/nvim/spell
+
+# Private settings
+.zshrc.private
+.gitconfig.private

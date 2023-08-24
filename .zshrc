@@ -18,7 +18,7 @@ export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 # Aliases
 alias watch='watch '
 alias k='kubectl'
-alias awsp='source _awsp'
+alias awsp='source ~/.awsp-wrapper'
 alias g='git'
 alias so='source'
 alias soz='source ~/.zshrc'
@@ -79,30 +79,39 @@ zle -N fzf-cdr
 bindkey '^@' fzf-cdr
 
 # direnv
-[[ `command -v direnv` ]] && eval "$(direnv hook zsh)"
+[ $commands[direnv] ] && eval "$(direnv hook zsh)"
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT=true
 
-# kubectl auto-completion
-# https://kubernetes.io/docs/reference/kubectl/cheatsheet/#zsh
+# kubectl completion
 if [[ $commands[kubectl] ]] then;
   source <(kubectl completion zsh)
   complete -F __start_kubectl k
-fi
 
-# zsh-kubectl-prompt
-# https://github.com/superbrothers/zsh-kubectl-prompt
-if [[ -d "${HOME}/zsh-kubectl-prompt" ]] then;
+  # zsh-kubectl-prompt
+  # https://github.com/superbrothers/zsh-kubectl-prompt
+  if [[ ! -d "${HOME}/zsh-kubectl-prompt" ]] then;
+    echo Clone 'zsh-kubectl-prompt'.
+    git clone https://github.com/superbrothers/zsh-kubectl-prompt.git ${HOME}/zsh-kubectl-prompt
+  fi
+  
   autoload -U colors; colors
   source ${HOME}/zsh-kubectl-prompt/kubectl.zsh
   RPROMPT='%{$fg[cyan]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 fi
 
-# tkn auto-completion
-if [[ $commands[tkn] ]] then;
-  source <(tkn completion zsh)
-fi
+# Helm completion 
+[ $commands[helm] ] && source <(helm completion zsh)
+
+# Minikube completion 
+[ $commands[minikube] ] && source <(minikube completion zsh)
+
+# Github CLI completion 
+[ $commands[gh] ] && source <(gh completion -s zsh)
+
+# Pulumi completion
+[ $commands[pulumi] ] && source <(pulumi gen-completion zsh)
 
 # JAVA_HOME (asdf)
 [ -s ~/.asdf/plugins/java/set-java-home.zsh ] && . ~/.asdf/plugins/java/set-java-home.zsh
@@ -116,9 +125,13 @@ fi
 # Terraform completion (asdf)
 [ -s $HOME/.asdf/shims/terraform ] && complete -o nospace -C "$HOME/.asdf/shims/terraform" terraform
 
-# Azure CLI auto-completion
-if [[ $commands[az] ]] && [[ -f "$HOME/az.completion" ]] then;
-  source $HOME/az.completion
+# Azure CLI completion
+if [[ $commands[az] ]] then;
+  if [[ ! -f "$HOME/.azure/az.completion" ]] then;
+    echo Download 'az.completion'.
+    curl -o $HOME/.azure/az.completion https://raw.githubusercontent.com/Azure/azure-cli/dev/az.completion
+  fi
+  source $HOME/.azure/az.completion
 fi
 
 # Docker rootless mode
@@ -127,3 +140,7 @@ fi
 
 # Private settings that can not be published in the repository
 [[ -f "${HOME}/.zshrc.private" ]] && source "${HOME}/.zshrc.private"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

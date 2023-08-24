@@ -1,9 +1,15 @@
 # Dotfiles
 
-Dotfiles and linux (Pop!_OS/Ubuntu) develop machine setup procedure.  
-Run [`install.sh`](install.sh) to create dotfiles (symbolic links) and then install software with [setup procedure](./setup.md).
+Dotfiles for Ubuntu 22.04.  
 
-Create the followings and add private settings as needed.
+Install dotfiles with dependent software:
 
-- `${HOME}/.zshrc.private`
-- `${HOME}/.gitconfig.private`
+```sh
+./bootstrap/bootstrap.sh
+```
+
+Install dotfiles only:
+
+```sh
+./install.sh
+```

@@ -33,7 +33,7 @@
   lga = log --graph --decorate --all --date-order --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(bold blue)%h%Creset %C(bold green)%ad%Creset %s %C(bold blue)<%an>%Creset%C(auto)%d'
 
 [credential "https://github.com"]
-  helper = !/usr/bin/gh auth git-credential
+  helper = "!gh auth git-credential"
 
 # Private settings that can not be published in the repository
 [includeIf "gitdir:~/"]

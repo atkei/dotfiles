@@ -27,10 +27,14 @@ function mklinks() {
   mklink ".zshrc"
   mklink ".zprofile"
   mklink ".zpreztorc"
+  mklink ".zlogin"
+  mklink ".zlogout"
+  mklink ".zshenv"
   mklink ".tmux.conf"
   mklink ".gitconfig"
   mklink ".keymaps.vim"
   mklink ".ideavimrc"
+  mklink ".awsp-wrapper"
   mklink ".config/nvim" ${CONFDIR}
   mklink ".config/git" ${CONFDIR}
 }
