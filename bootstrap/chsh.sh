@@ -7,6 +7,6 @@ if [ ! $(command -v zsh) ]; then
   exit 0
 fi
 
-chsh -s $(which zsh)
+sudo chsh $USER -s $(which zsh)
 
 exit 0
