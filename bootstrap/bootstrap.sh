@@ -26,6 +26,7 @@ task "Install asdf" "asdf.sh"
 task "Install asdf plugins" "asdf-plugins.sh"
 task "Install global pip packages" "pip.sh"
 task "Install Docker" "docker.sh"
+task "Install Google Chrome" "google-chrome.sh"
 task "Change default shell to zsh" "chsh.sh"
 
 exit 0

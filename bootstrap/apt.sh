@@ -5,32 +5,33 @@ set -e
 sudo apt -y update
 
 sudo apt install -y \
-  vim \
-  zsh \
-  git \
-  zip \
-  unzip \
-  direnv \
   build-essential \
-  libssl-dev \
-  zlib1g-dev \
+  ca-certificates \
+  cmake \
+  curl \
+  direnv \
+  fonts-noto-cjk \
+  fonts-noto-cjk-extra \
+  git \
+  gnupg \
   libbz2-dev \
+  libffi-dev \
+  libncursesw5-dev \
   libreadline-dev \
   libsqlite3-dev \
-  curl \
-  libncursesw5-dev \
-  xz-utils \
-  tk-dev \
-  libxml2-dev \
+  libssl-dev \
   libxmlsec1-dev \
-  libffi-dev \
+  libxml2-dev \
   liblzma-dev \
+  ninja-build \
+  tk-dev \
   tmux \
+  unzip \
+  vim \
   xsel \
-  ca-certificates \
-  curl \
-  gnupg \
-  fonts-noto-cjk \
-  fonts-noto-cjk-extra
+  xz-utils \
+  zip \
+  zlib1g-dev \
+  zsh
 
 exit 0
