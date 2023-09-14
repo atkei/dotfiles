@@ -1,3 +1,6 @@
+# Private settings that can not be published in the repository
+[[ -f "${HOME}/.zshrc.private" ]] && source "${HOME}/.zshrc.private"
+
 # prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -138,9 +141,3 @@ fi
 # https://docs.docker.com/engine/security/rootless/
 [[ "$(systemctl --user is-active docker.service 2> /dev/null)" = "active" ]] && export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
-# Private settings that can not be published in the repository
-[[ -f "${HOME}/.zshrc.private" ]] && source "${HOME}/.zshrc.private"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
