@@ -18,6 +18,7 @@ install_plugin "java" "https://github.com/halcyon/asdf-java.git" "adoptopenjdk-1
 install_plugin "python" "" "latest"
 install_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git" "latest"
 install_plugin "golang" "https://github.com/asdf-community/asdf-golang.git" "latest"
+install_plugin "rust" "https://github.com/asdf-community/asdf-rust.git" "latest"
 install_plugin "flutter" "" "latest"
 
 install_plugin "gradle" "https://github.com/rfrancis/asdf-gradle.git" "latest"
