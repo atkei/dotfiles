@@ -27,6 +27,9 @@
 [push]
   default = simple
 
+[fetch]
+	prune = true
+
 [alias]
   st = status -s --no-untracked-files
   lg = log --graph --decorate --date-order --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(bold blue)%h%Creset %C(bold green)%ad%Creset %s %C(bold blue)<%an>%Creset%C(auto)%d'
