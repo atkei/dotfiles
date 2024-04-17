@@ -33,6 +33,8 @@ install_plugin "github-cli" "https://github.com/bartlomiejdanek/asdf-github-cli.
 install_plugin "awsci" "https://github.com/MetricMike/asdf-awscli.git" "latest"
 install_plugin "azure-cli" "https://github.com/EcoMind/asdf-azure-cli" "latest"
 
+install_plugin "gcloud" "https://github.com/jthegedus/asdf-gcloud" "latest"
+
 install_plugin "terraform" "https://github.com/asdf-community/asdf-hashicorp.git" "latest"
 install_plugin "pulumi" "https://github.com/canha/asdf-pulumi.git" "latest"
 

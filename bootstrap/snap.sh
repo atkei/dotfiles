@@ -11,4 +11,7 @@ sudo snap install goland --classic
 # Neovim
 sudo snap install nvim --classic
 
+# Visual Studio Code
+sudo snap install code --classic
+
 exit 0

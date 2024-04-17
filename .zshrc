@@ -141,3 +141,13 @@ fi
 # https://docs.docker.com/engine/security/rootless/
 [[ "$(systemctl --user is-active docker.service 2> /dev/null)" = "active" ]] && export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
+# WSL
+if [ -n "$(which wslpath)" ]; then
+  export DONT_PROMPT_WSL_INSTALL=true
+  export GTK_IM_MODULE=fcitx
+  export QT_IM_MODULE=fcitx
+  export XMODIFIERS=@im=fcitx
+  if ! pgrep -x fcitx >/dev/null; then
+    fcitx > /dev/null 2>&1
+  fi
+fi

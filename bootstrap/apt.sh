@@ -12,6 +12,7 @@ sudo apt install -y \
   direnv \
   fonts-noto-cjk \
   fonts-noto-cjk-extra \
+  fuse \
   git \
   gnupg \
   libbz2-dev \
