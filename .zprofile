@@ -1,4 +1,4 @@
-typeset -gU cdpath fpath mailpath path 
+typeset -gU cdpath fpath mailpath path
 typeset -gU CDPATH FPATH MAILPATH PATH
 
 export EDITOR=nvim
@@ -38,4 +38,8 @@ export PATH=$PATH:"$HOME/Android/Sdk/platform-tools"
 if [[ -s $HOME/.asdf/asdf.sh ]]; then
   . "$HOME/.asdf/asdf.sh"
   fpath=(${ASDF_DIR}/completions $fpath)
+fi
+
+if [[ -f /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi

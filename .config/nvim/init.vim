@@ -76,6 +76,6 @@ set statusline+=%F
 " Python3 support (asdf)
 let g:python3_host_prog = system('echo -n $(which python3)')
 
-augroup vimrc 
+augroup vimrc
   autocmd!
 augroup END

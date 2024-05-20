@@ -1,0 +1,8 @@
+tap "homebrew/bundle"
+brew "azure-cli"
+brew "direnv"
+brew "jq"
+brew "neovim"
+brew "tmux"
+brew "wget"
+cask "warp"
