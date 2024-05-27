@@ -15,6 +15,7 @@ fi
 . "$HOME/.asdf/asdf.sh"
 
 install_plugin "java" "https://github.com/halcyon/asdf-java.git" "adoptopenjdk-17.0.8+7"
+install_plugin "kotlin" "" "latest"
 install_plugin "python" "" "latest"
 install_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git" "latest"
 install_plugin "golang" "https://github.com/asdf-community/asdf-golang.git" "latest"
@@ -31,7 +32,6 @@ install_plugin "helm" "https://github.com/Antiarchitect/asdf-helm.git" "latest"
 install_plugin "github-cli" "https://github.com/bartlomiejdanek/asdf-github-cli.git" "latest"
 
 install_plugin "awsci" "https://github.com/MetricMike/asdf-awscli.git" "latest"
-install_plugin "azure-cli" "https://github.com/EcoMind/asdf-azure-cli" "latest"
 
 install_plugin "gcloud" "https://github.com/jthegedus/asdf-gcloud" "latest"
 

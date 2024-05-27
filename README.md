@@ -1,14 +1,23 @@
 # Dotfiles
 
-Dotfiles for Ubuntu 22.04.  
+## Environments
 
-Install dotfiles with dependent software:
+* Ubuntu 22.04
+* MacOS
+
+## Prerequisites
+
+### MacOS
+
+* [Homebrew](https://brew.sh/)
+
+## Bootstrap
 
 ```sh
 ./bootstrap/bootstrap.sh
 ```
 
-Install dotfiles only:
+## Install Dotfiles Only
 
 ```sh
 ./install.sh

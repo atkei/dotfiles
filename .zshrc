@@ -91,26 +91,24 @@ export PIPENV_VENV_IN_PROJECT=true
 if [[ $commands[kubectl] ]] then;
   source <(kubectl completion zsh)
   complete -F __start_kubectl k
+fi
 
-  # zsh-kubectl-prompt
-  # https://github.com/superbrothers/zsh-kubectl-prompt
-  if [[ ! -d "${HOME}/zsh-kubectl-prompt" ]] then;
-    echo Clone 'zsh-kubectl-prompt'.
-    git clone https://github.com/superbrothers/zsh-kubectl-prompt.git ${HOME}/zsh-kubectl-prompt
-  fi
-  
+# zsh-kubectl-prompt
+# https://github.com/superbrothers/zsh-kubectl-prompt
+if [[ ! -d "${HOME}/zsh-kubectl-prompt" ]] then;
   autoload -U colors; colors
   source ${HOME}/zsh-kubectl-prompt/kubectl.zsh
   RPROMPT='%{$fg[cyan]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 fi
 
-# Helm completion 
+
+# Helm completion
 [ $commands[helm] ] && source <(helm completion zsh)
 
-# Minikube completion 
+# Minikube completion
 [ $commands[minikube] ] && source <(minikube completion zsh)
 
-# Github CLI completion 
+# Github CLI completion
 [ $commands[gh] ] && source <(gh completion -s zsh)
 
 # Pulumi completion
@@ -129,11 +127,7 @@ fi
 [ -s $HOME/.asdf/shims/terraform ] && complete -o nospace -C "$HOME/.asdf/shims/terraform" terraform
 
 # Azure CLI completion
-if [[ $commands[az] ]] then;
-  if [[ ! -f "$HOME/.azure/az.completion" ]] then;
-    echo Download 'az.completion'.
-    curl -o $HOME/.azure/az.completion https://raw.githubusercontent.com/Azure/azure-cli/dev/az.completion
-  fi
+if [[ -f "$HOME/.azure/az.completion" ]] then;
   source $HOME/.azure/az.completion
 fi
 

@@ -37,6 +37,10 @@ function mklinks() {
   mklink ".awsp-wrapper"
   mklink ".config/nvim" ${CONFDIR}
   mklink ".config/git" ${CONFDIR}
+
+  if [ "$(uname)" == "Darwin" ]; then
+    mklink ".Brewfile"
+  fi
 }
 
 if [ "${1}" == "--force" -o "${1}" == "-f" ]; then
