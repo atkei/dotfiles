@@ -30,9 +30,8 @@ install_plugin "minikube" "https://github.com/alvarobp/asdf-minikube.git" "lates
 install_plugin "helm" "https://github.com/Antiarchitect/asdf-helm.git" "latest"
 
 install_plugin "github-cli" "https://github.com/bartlomiejdanek/asdf-github-cli.git" "latest"
-
+install_plugin "firebase" "" "latest"
 install_plugin "awsci" "https://github.com/MetricMike/asdf-awscli.git" "latest"
-
 install_plugin "gcloud" "https://github.com/jthegedus/asdf-gcloud" "latest"
 
 install_plugin "terraform" "https://github.com/asdf-community/asdf-hashicorp.git" "latest"
