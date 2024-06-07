@@ -35,6 +35,7 @@ task "Install global pip packages" "pip.sh"
 if [ "$(uname)" == "Linux" ]; then
   task "Install Docker" "docker.sh"
   task "Install Azure CLI" "az.sh"
+  task "Install Supabase CLI" "supabase.sh"
   task "Install Google Chrome" "google-chrome.sh"
   task "Change default shell to zsh" "chsh.sh"
 fi
