@@ -4,3 +4,6 @@
 # Private settings
 .zshrc.private
 .gitconfig.private
+
+.idea/
+.vscode/
