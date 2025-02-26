@@ -145,3 +145,32 @@ if [ -n "$(which wslpath)" ]; then
     fcitx > /dev/null 2>&1
   fi
 fi
+
+function aws-mfa() {
+  local MFA_ARN=$1
+  local MFA_CODE=$2
+
+  if [[ -z "$MFA_ARN" || -z "$MFA_CODE" ]]; then
+    echo "Usage: mfa <MFA_ARN> <MFA_CODE>"
+    return 1
+  fi
+
+  local SESSION_JSON=$(aws sts get-session-token --serial-number "$MFA_ARN" --token-code "$MFA_CODE" --output json 2>/dev/null)
+
+  if [[ -z "$SESSION_JSON" ]]; then
+    echo "Failed to get session token. Check your MFA ARN and code."
+    return 1
+  fi
+
+  export AWS_ACCESS_KEY_ID=$(echo "$SESSION_JSON" | jq -r '.Credentials.AccessKeyId')
+  export AWS_SECRET_ACCESS_KEY=$(echo "$SESSION_JSON" | jq -r '.Credentials.SecretAccessKey')
+  export AWS_SESSION_TOKEN=$(echo "$SESSION_JSON" | jq -r '.Credentials.SessionToken')
+
+  echo "AWS credentials updated successfully."
+}
+
+function unset-aws-mfa() {
+  unset AWS_ACCESS_KEY_ID
+  unset AWS_SECRET_ACCESS_KEY
+  unset AWS_SESSION_TOKEN
+}
