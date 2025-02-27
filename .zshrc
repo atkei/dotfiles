@@ -89,7 +89,7 @@ fi
 
 # zsh-kubectl-prompt
 # https://github.com/superbrothers/zsh-kubectl-prompt
-if [[ ! -d "${HOME}/zsh-kubectl-prompt" ]] then;
+if [[ -d "${HOME}/zsh-kubectl-prompt" ]] then;
   autoload -U colors; colors
   source ${HOME}/zsh-kubectl-prompt/kubectl.zsh
   RPROMPT='%{$fg[cyan]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
