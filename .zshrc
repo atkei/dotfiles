@@ -38,15 +38,9 @@ alias dcu='docker-compose up -d'
 alias dcd='docker-compose down'
 alias zmv='noglob zmv -W'
 alias tf='terraform'
-
-# neovim/vim
-if [[ `command -v nvim` ]]; then
-  alias v='nvim'
-  alias vim='nvim'
-  alias vimdiff='nvim -d'
-else
-  alias v='vim'
-fi
+alias v='vim'
+alias vim='vim'
+alias vimdiff='vim -d'
 
 url-encode() {echo $1 | nkf -WwMQ | sed 's/=$//g' | tr = % | tr -d '\n'}
 

@@ -1,8 +1,8 @@
 typeset -gU cdpath fpath mailpath path
 typeset -gU CDPATH FPATH MAILPATH PATH
 
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=vim
+export VISUAL=vim
 export PAGER=less
 
 # Flutter

@@ -1,28 +1,28 @@
 [core]
-  editor = nvim
+  editor = vim
   autocrlf = input
 
 [color]
   ui = auto
 
 [diff]
-  tool = nvimdiff
+  tool = vimdiff
 
 [difftool]
   prompt = false
 
-[difftool "nvimdiff"]
-  cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
+[difftool "vimdiff"]
+  cmd = "vim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
 
 [merge]
-  tool = nvimdiff
+  tool = vimdiff
 
 [mergetool]
   keepBackup = false
 
-[mergetool "nvimdiff"]
+[mergetool "vimdiff"]
   # 3-way merge
-  cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
+  cmd = "vim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
 
 [push]
   default = simple

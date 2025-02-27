@@ -35,7 +35,7 @@ function mklinks() {
   mklink ".keymaps.vim"
   mklink ".ideavimrc"
   mklink ".awsp-wrapper"
-  mklink ".config/nvim" ${CONFDIR}
+  mklink ".vimrc"
   mklink ".config/git" ${CONFDIR}
 
   if [ "$(uname)" == "Darwin" ]; then
