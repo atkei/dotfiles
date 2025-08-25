@@ -1,3 +1,5 @@
 .envrc
 .env
 .tool-versions
+
+**/.claude/settings.local.json
