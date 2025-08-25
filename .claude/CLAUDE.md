@@ -27,4 +27,4 @@
 - Explain WHY only - business context, constraints, specification reasons
 - Never explain HOW - code should be self-explanatory
 - Follow project conventions for documentation comments (JSDoc, etc.)
-- Match project language requirements for comments
+- Use English or Japanese for comments, matching the project's primary language
