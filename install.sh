@@ -24,6 +24,11 @@ function mklinks() {
     echo "Created: ${CONFDIR}"
   fi
 
+  if [ ! -d "${HOME}/.claude" ]; then
+    mkdir -p "${HOME}/.claude"
+    echo "Created: ${HOME}/.claude"
+  fi
+
   mklink ".zshrc"
   mklink ".zprofile"
   mklink ".zpreztorc"
@@ -37,6 +42,7 @@ function mklinks() {
   mklink ".awsp-wrapper"
   mklink ".vimrc"
   mklink ".config/git" ${CONFDIR}
+  mklink ".claude/CLAUDE.md" "${HOME}/.claude"
 
   if [ "$(uname)" == "Darwin" ]; then
     mklink ".Brewfile"
