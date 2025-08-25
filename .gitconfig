@@ -34,6 +34,36 @@
   st = status -s --no-untracked-files
   lg = log --graph --decorate --date-order --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(bold blue)%h%Creset %C(bold green)%ad%Creset %s %C(bold blue)<%an>%Creset%C(auto)%d'
   lga = log --graph --decorate --all --date-order --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(bold blue)%h%Creset %C(bold green)%ad%Creset %s %C(bold blue)<%an>%Creset%C(auto)%d'
+  
+  wta = "!f() { \
+    branch=\"$1\"; \
+    if [ -z \"$branch\" ]; then \
+      echo \"Usage: git wta <branch>\"; \
+      return 1; \
+    fi; \
+    repo_dir=$(git rev-parse --show-toplevel); \
+    parent_dir=$(dirname \"$repo_dir\"); \
+    repo_name=$(basename \"$repo_dir\"); \
+    safe_branch=$(echo \"$branch\" | sed 's#[^A-Za-z0-9._-]#-#g'); \
+    path=\"$parent_dir/${repo_name}-$safe_branch\"; \
+    if git show-ref --verify --quiet \"refs/heads/$branch\"; then \
+      git worktree add \"$path\" \"$branch\"; \
+    else \
+      git worktree add -b \"$branch\" \"$path\"; \
+    fi; \
+  }; f"
+    
+  wtr = "!f() { \
+    branch=\"$1\"; \
+    worktree_path=$(git worktree list --porcelain | grep -B2 \"branch refs/heads/$branch\" | grep \"worktree\" | cut -d' ' -f2); \
+    if [ -n \"$worktree_path\" ]; then \
+      git worktree remove ${2:+--force} \"$worktree_path\"; \
+    else \
+      echo \"Worktree for branch '$branch' not found\"; \
+    fi; \
+  }; f"
+    
+  wtl = worktree list
 
 [credential "https://github.com"]
   helper = "!gh auth git-credential"
