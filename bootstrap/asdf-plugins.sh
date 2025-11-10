@@ -23,6 +23,7 @@ install_plugin "rust" "https://github.com/asdf-community/asdf-rust.git" "latest"
 install_plugin "flutter" "" "latest"
 install_plugin "deno" "https://github.com/asdf-community/asdf-deno.git"
 
+install_plugin "pnpm" "https://github.com/asdf-community/asdf-pnpm.git" "latest"
 install_plugin "gradle" "https://github.com/rfrancis/asdf-gradle.git" "latest"
 install_plugin "maven" "https://github.com/halcyon/asdf-maven.git" "latest"
 
