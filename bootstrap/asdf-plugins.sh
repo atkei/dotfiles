@@ -39,4 +39,6 @@ install_plugin "gcloud" "https://github.com/jthegedus/asdf-gcloud" "latest"
 install_plugin "terraform" "https://github.com/asdf-community/asdf-hashicorp.git" "latest"
 install_plugin "pulumi" "https://github.com/canha/asdf-pulumi.git" "latest"
 
+install_plugin "uv" "https://github.com/asdf-community/asdf-uv.git" "latest"
+
 exit 0
