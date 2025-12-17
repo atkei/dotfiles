@@ -1,6 +1,7 @@
 tap "cockroachdb/tap"
 tap "supabase/tap"
 brew "azure-cli"
+brew "gh"
 brew "direnv"
 brew "jq"
 brew "neovim"
