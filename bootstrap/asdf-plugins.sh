@@ -3,7 +3,10 @@
 set -e
 
 function install_plugin() {
-  asdf plugin-add ${1} ${2} && asdf install ${1} ${3} && asdf global ${1} ${3}
+  asdf plugin-add ${1} ${2}
+  asdf install ${1} ${3}
+  local version=$(asdf list ${1} | tail -1 | tr -d ' *')
+  asdf global ${1} ${version}
   return 0
 }
 
