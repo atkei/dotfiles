@@ -11,13 +11,11 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [ubuntu-22.04, ubuntu-24.04, macos-latest]
+        os: [ubuntu-24.04, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
     - name: Checkout
       uses: actions/checkout@v6
-      with:
-        persist-credentials: false
     - name: Bootstrap
       run: |
         ./bootstrap/bootstrap.sh
