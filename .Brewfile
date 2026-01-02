@@ -1,5 +1,4 @@
 tap "cockroachdb/tap"
-tap "homebrew/bundle"
 tap "mongodb/brew"
 tap "supabase/tap"
 brew "azure-cli"
