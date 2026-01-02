@@ -15,6 +15,7 @@ sudo apt install -y \
   fuse \
   git \
   gnupg \
+  jq \
   libbz2-dev \
   libffi-dev \
   libncursesw5-dev \
@@ -27,8 +28,10 @@ sudo apt install -y \
   ninja-build \
   tk-dev \
   tmux \
+  tree \
   unzip \
   vim \
+  wget \
   xsel \
   xz-utils \
   zip \
