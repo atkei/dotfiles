@@ -29,7 +29,6 @@ task "Install prezto" "prezto.sh"
 task "Install Tmux Plugin Manager" "tpm.sh"
 task "Install fzf" "fzf.sh"
 task "Install asdf" "asdf.sh"
-task "Install asdf plugins" "asdf-plugins.sh"
 task "Install rulesync" "rulesync.sh"
 
 if [ "$(uname)" == "Linux" ]; then
