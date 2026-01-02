@@ -9,6 +9,11 @@ if [ $(command -v codex) ]; then
   exit 0
 fi
 
+if ! command -v jq &> /dev/null; then
+  echo "jq is required but not installed."
+  exit 1
+fi
+
 OS=$(uname -s)
 if [ "$OS" != "Linux" ]; then
   echo "This script is for Linux only."
@@ -29,12 +34,12 @@ case "$ARCH" in
     ;;
 esac
 
-VERSION=$(curl -s https://api.github.com/repos/openai/codex/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+VERSION=$(curl -s https://api.github.com/repos/openai/codex/releases/latest | jq -r '.tag_name')
 BINARY_URL="https://github.com/openai/codex/releases/download/${VERSION}/codex-${TARGET}.tar.gz"
 
 curl -L "$BINARY_URL" -o /tmp/codex.tar.gz
 tar -xzf /tmp/codex.tar.gz -C /tmp
-sudo mv /tmp/codex /usr/local/bin/
+sudo mv /tmp/codex-${TARGET} /usr/local/bin/codex
 rm /tmp/codex.tar.gz
 
 exit 0
