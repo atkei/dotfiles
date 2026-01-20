@@ -25,6 +25,10 @@ elif [ "$(uname)" == "Darwin" ]; then
   task "Install Homebrew packages" "brew.sh"
 fi
 
+if [ "$(uname)" == "Linux" ] || [ "$(uname)" == "Darwin" ]; then
+  task "Install Claude Code" "claude.sh"
+fi
+
 task "Install prezto" "prezto.sh"
 task "Install Tmux Plugin Manager" "tpm.sh"
 task "Install fzf" "fzf.sh"
