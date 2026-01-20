@@ -9,3 +9,6 @@
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+source "/Users/ichihashi/.rover/env"
+
+export PATH="$HOME/.local/bin:$PATH"
