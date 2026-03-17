@@ -108,10 +108,11 @@ fi
 # Pulumi completion
 [ $commands[pulumi] ] && source <(pulumi gen-completion zsh)
 
-# mise
+# mise (Linux only; Homebrew auto-activates on macOS)
 # https://mise.jdx.dev/
-if command -v mise &> /dev/null; then
+if [[ "$(uname)" == "Linux" ]] && command -v mise &> /dev/null; then
   eval "$(mise activate zsh)"
+  eval "$(mise completion zsh)"
 fi
 
 # Azure CLI completion
