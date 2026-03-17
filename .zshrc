@@ -108,17 +108,12 @@ fi
 # Pulumi completion
 [ $commands[pulumi] ] && source <(pulumi gen-completion zsh)
 
-# JAVA_HOME (asdf)
-[ -s ~/.asdf/plugins/java/set-java-home.zsh ] && . ~/.asdf/plugins/java/set-java-home.zsh
-
-# FLUTTER_ROOT (asdf)
-[[ $(asdf where flutter 2> /dev/null) ]] && export FLUTTER_ROOT="$(asdf where flutter)"
-
-# AWS CLI completion (asdf)
-[ -s $HOME/.asdf/shims/aws_completer ] && complete -C '$HOME/.asdf/shims/aws_completer' aws
-
-# Terraform completion (asdf)
-[ -s $HOME/.asdf/shims/terraform ] && complete -o nospace -C "$HOME/.asdf/shims/terraform" terraform
+# mise (Linux only; Homebrew auto-activates on macOS)
+# https://mise.jdx.dev/
+if [[ "$(uname)" == "Linux" ]] && command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
+  eval "$(mise completion zsh)"
+fi
 
 # Azure CLI completion
 if [[ -f "$HOME/.azure/az.completion" ]] then;
