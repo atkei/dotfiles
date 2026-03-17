@@ -66,6 +66,11 @@
   wtl = worktree list
 
 [credential "https://github.com"]
+  helper = ""
+  helper = "!gh auth git-credential"
+
+[credential "https://gist.github.com"]
+  helper = ""
   helper = "!gh auth git-credential"
 
 # Private settings that can not be published in the repository
