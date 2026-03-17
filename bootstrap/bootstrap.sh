@@ -32,10 +32,10 @@ fi
 task "Install prezto" "prezto.sh"
 task "Install Tmux Plugin Manager" "tpm.sh"
 task "Install fzf" "fzf.sh"
-task "Install mise" "mise.sh"
 task "Install rulesync" "rulesync.sh"
 
 if [ "$(uname)" == "Linux" ]; then
+  task "Install mise" "mise.sh"
   task "Install Docker" "docker.sh"
   task "Install Azure CLI" "az.sh"
   task "Install Supabase CLI" "supabase.sh"
