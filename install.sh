@@ -37,6 +37,7 @@ function mklinks() {
   mklink ".awsp-wrapper"
   mklink ".vimrc"
   mklink ".config/git" ${CONFDIR}
+  mklink ".config/cmux" ${CONFDIR}
 
   if [ "$(uname)" == "Darwin" ]; then
     mklink ".Brewfile"
