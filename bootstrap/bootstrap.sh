@@ -27,6 +27,7 @@ fi
 
 if [ "$(uname)" == "Linux" ] || [ "$(uname)" == "Darwin" ]; then
   task "Install Claude Code" "claude.sh"
+  task "Install Cursor CLI" "cursor-cli.sh"
 fi
 
 task "Install prezto" "prezto.sh"
