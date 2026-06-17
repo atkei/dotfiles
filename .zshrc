@@ -109,8 +109,10 @@ fi
 [ $commands[pulumi] ] && source <(pulumi gen-completion zsh)
 
 # mise
-eval "$(mise activate zsh)"
-eval "$(mise completion zsh)"
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
+  eval "$(mise completion zsh)"
+fi
 
 # Azure CLI completion
 if [[ -f "$HOME/.azure/az.completion" ]] then;
@@ -160,4 +162,3 @@ function unset-aws-mfa() {
   unset AWS_SECRET_ACCESS_KEY
   unset AWS_SESSION_TOKEN
 }
-
