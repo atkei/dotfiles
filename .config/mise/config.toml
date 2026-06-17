@@ -1,0 +1,11 @@
+[tools]
+aws = "2.34.10"
+firebase = "14.26.0"
+gcloud = "548.0.0"
+neovim = "0.12.3"
+node = "24.14.0"
+pnpm = "10.32.1"
+python = "3.14.3"
+terraform = "1.14.0"
+tree-sitter = "0.26.9"
+uv = "0.10.11"

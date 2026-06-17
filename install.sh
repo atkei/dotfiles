@@ -39,6 +39,7 @@ function mklinks() {
   mklink ".config/git" ${CONFDIR}
   mklink ".config/cmux" ${CONFDIR}
   mklink ".config/ghostty" ${CONFDIR}
+  mklink ".config/mise" ${CONFDIR}
   mklink ".config/nvim" ${CONFDIR}
 
   if [ "$(uname)" == "Darwin" ]; then

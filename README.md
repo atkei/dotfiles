@@ -36,11 +36,13 @@ Creates symlinks for dotfiles without installing tools.
 ## Neovim
 
 A minimal, hand-rolled Neovim config lives in `.config/nvim/init.lua` (managed
-via symlink by `install.sh`). Requires Neovim >= 0.10.1.
+via symlink by `install.sh`). Neovim and `tree-sitter` are installed through
+`mise` and pinned in `.config/mise/config.toml`.
 
 - **Plugin manager:** [lazy.nvim](https://github.com/folke/lazy.nvim) — bootstraps itself and installs plugins on first `nvim` launch.
 - **Fuzzy finder:** [fzf-lua](https://github.com/ibhagwan/fzf-lua) — `<leader>ff` files, `<leader>fg` live grep, `<leader>fb` buffers.
-- **Syntax:** Treesitter.
+- **Syntax:** [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 - **Markdown:** [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) for in-buffer viewing; [live-preview.nvim](https://github.com/brianhuster/live-preview.nvim) for browser preview (`<leader>mp`).
 
+Keep the `nvim-treesitter` branch aligned with the pinned Neovim major version.
 After the first launch, commit the generated `.config/nvim/lazy-lock.json` to pin plugin versions.

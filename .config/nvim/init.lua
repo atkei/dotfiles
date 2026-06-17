@@ -38,6 +38,16 @@ opt.undofile = true        -- persistent undo
 opt.splitright = true
 opt.splitbelow = true
 
+local treesitter_parsers = {
+  'lua', 'vim', 'vimdoc', 'bash', 'json', 'yaml', 'toml',
+  'markdown', 'markdown_inline',
+}
+
+local treesitter_filetypes = {
+  'lua', 'vim', 'vimdoc', 'bash', 'sh', 'json', 'yaml', 'toml',
+  'markdown',
+}
+
 -- Shared key mappings (leader=space, jj=esc, buffer/tab nav, etc.).
 -- Single source of truth, also used by ~/.vimrc and IdeaVim conventions.
 local keymaps = vim.fn.expand('~/.keymaps.vim')
@@ -94,17 +104,21 @@ require('lazy').setup({
   -- Syntax-aware highlighting for reading code and Markdown.
   {
     'nvim-treesitter/nvim-treesitter',
-    branch = 'master',
+    branch = 'main',
+    lazy = false,
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs',
-    opts = {
-      ensure_installed = {
-        'lua', 'vim', 'vimdoc', 'bash', 'json', 'yaml', 'toml',
-        'markdown', 'markdown_inline',
-      },
-      auto_install = true,
-      highlight = { enable = true },
-    },
+    config = function()
+      require('nvim-treesitter').setup({
+        install_dir = vim.fn.stdpath('data') .. '/site',
+      })
+      require('nvim-treesitter').install(treesitter_parsers)
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = treesitter_filetypes,
+        callback = function(event)
+          pcall(vim.treesitter.start, event.buf)
+        end,
+      })
+    end,
   },
 
   -- Markdown: in-buffer rendering (no browser) for everyday viewing in cmux.

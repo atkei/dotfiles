@@ -15,5 +15,6 @@ fi
 
 # Configure
 mise settings set idiomatic_version_file_enable_tools '["node"]'
+mise install
 
 exit 0
