@@ -119,19 +119,14 @@ require('lazy').setup({
   },
 
   {
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    ft = { 'markdown' },
-    opts = {},
-  },
-
-  {
     'brianhuster/live-preview.nvim',
     cmd = 'LivePreview',
     keys = {
       { '<leader>mp', '<cmd>LivePreview start<cr>', desc = 'Markdown preview (browser)' },
     },
-    opts = {},
+    opts = {
+      sync_scroll = false,
+    },
   },
 }, {
   change_detection = { notify = false },
