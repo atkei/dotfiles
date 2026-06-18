@@ -1,7 +1,5 @@
 # Dotfiles
 
-[![Bootstrap Test](https://github.com/atkei/dotfiles/actions/workflows/ci.yml/badge.svg)](https://github.com/atkei/dotfiles/actions/workflows/ci.yml)
-
 Personal dotfiles and bootstrap scripts for development environment setup.
 
 ## Environments
