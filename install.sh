@@ -33,9 +33,7 @@ function mklinks() {
   mklink ".tmux.conf"
   mklink ".gitconfig"
   mklink ".keymaps.vim"
-  mklink ".ideavimrc"
   mklink ".awsp-wrapper"
-  mklink ".vimrc"
   mklink ".config/git" ${CONFDIR}
   mklink ".config/cmux" ${CONFDIR}
   mklink ".config/ghostty" ${CONFDIR}

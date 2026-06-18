@@ -74,6 +74,32 @@ require('lazy').setup({
   },
 
   {
+    'nvim-mini/mini.files',
+    version = false,
+    dependencies = { { 'nvim-mini/mini.icons', opts = {} } },
+    keys = {
+      {
+        '<leader>e',
+        function()
+          MiniFiles.open()
+        end,
+        desc = 'Files',
+      },
+    },
+    config = function(_, opts)
+      require('mini.files').setup(opts)
+    end,
+    opts = {
+      options = {
+        use_as_default_explorer = true,
+      },
+      windows = {
+        preview = true,
+      },
+    },
+  },
+
+  {
     'nvim-treesitter/nvim-treesitter',
     branch = 'main',
     lazy = false,
