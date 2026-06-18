@@ -28,6 +28,7 @@ fi
 if [ "$(uname)" == "Linux" ] || [ "$(uname)" == "Darwin" ]; then
   task "Install Claude Code" "claude.sh"
   task "Install Cursor CLI" "cursor-cli.sh"
+  task "Install Codex" "codex.sh"
 fi
 
 task "Install prezto" "prezto.sh"
@@ -39,9 +40,7 @@ task "Setup mise" "mise.sh"
 if [ "$(uname)" == "Linux" ]; then
   task "Install Docker" "docker.sh"
   task "Install Azure CLI" "az.sh"
-  task "Install Supabase CLI" "supabase.sh"
   task "Install GitHub CLI" "gh.sh"
-  task "Install Codex" "codex.sh"
   task "Install Google Chrome" "google-chrome.sh"
   task "Change default shell to zsh" "chsh.sh"
 fi

@@ -26,6 +26,8 @@ sudo apt install -y \
   libxml2-dev \
   liblzma-dev \
   ninja-build \
+  ripgrep \
+  fd-find \
   tk-dev \
   tmux \
   tree \

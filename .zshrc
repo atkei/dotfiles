@@ -38,9 +38,7 @@ alias dcu='docker-compose up -d'
 alias dcd='docker-compose down'
 alias zmv='noglob zmv -W'
 alias tf='terraform'
-alias v='vim'
-alias vim='vim'
-alias vimdiff='vim -d'
+alias v='nvim'
 
 url-encode() {echo $1 | nkf -WwMQ | sed 's/=$//g' | tr = % | tr -d '\n'}
 
@@ -109,8 +107,10 @@ fi
 [ $commands[pulumi] ] && source <(pulumi gen-completion zsh)
 
 # mise
-eval "$(mise activate zsh)"
-eval "$(mise completion zsh)"
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
+  eval "$(mise completion zsh)"
+fi
 
 # Azure CLI completion
 if [[ -f "$HOME/.azure/az.completion" ]] then;
@@ -160,4 +160,3 @@ function unset-aws-mfa() {
   unset AWS_SECRET_ACCESS_KEY
   unset AWS_SESSION_TOKEN
 }
-

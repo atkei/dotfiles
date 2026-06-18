@@ -33,12 +33,12 @@ function mklinks() {
   mklink ".tmux.conf"
   mklink ".gitconfig"
   mklink ".keymaps.vim"
-  mklink ".ideavimrc"
   mklink ".awsp-wrapper"
-  mklink ".vimrc"
   mklink ".config/git" ${CONFDIR}
   mklink ".config/cmux" ${CONFDIR}
   mklink ".config/ghostty" ${CONFDIR}
+  mklink ".config/mise" ${CONFDIR}
+  mklink ".config/nvim" ${CONFDIR}
 
   if [ "$(uname)" == "Darwin" ]; then
     mklink ".Brewfile"
