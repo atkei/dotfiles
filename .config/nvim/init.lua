@@ -119,14 +119,20 @@ require('lazy').setup({
   },
 
   {
-    'brianhuster/live-preview.nvim',
-    cmd = 'LivePreview',
+    'iamcco/markdown-preview.nvim',
+    cmd = { 'MarkdownPreview', 'MarkdownPreviewStop', 'MarkdownPreviewToggle' },
+    ft = { 'markdown' },
+    -- install.sh はプリビルドバイナリを同期DLする（node/yarn 不要・curl+tar のみ）。
+    -- mkdp#util#install() は非同期で Lazy が完了を待てず黙って失敗するため避ける。
+    build = 'cd app && ./install.sh',
     keys = {
-      { '<leader>mp', '<cmd>LivePreview start<cr>', desc = 'Markdown preview (browser)' },
+      { '<leader>mp', '<cmd>MarkdownPreviewToggle<cr>', desc = 'Markdown preview (browser)' },
     },
-    opts = {
-      sync_scroll = false,
-    },
+    init = function()
+      -- 空文字 = 起動ごとに空きポートを自動割り当て（複数 nvim でも衝突しない）
+      vim.g.mkdp_port = ''
+      vim.g.mkdp_auto_close = 1
+    end,
   },
 }, {
   change_detection = { notify = false },
