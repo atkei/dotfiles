@@ -7,6 +7,7 @@
 
 [diff]
   tool = vimdiff
+  colorMoved = default
 
 [difftool]
   prompt = false
@@ -16,6 +17,7 @@
 
 [merge]
   tool = vimdiff
+  conflictstyle = zdiff3
 
 [mergetool]
   keepBackup = false
@@ -64,6 +66,17 @@
   }; f"
     
   wtl = worktree list
+
+  # PR diff: feature branch がマージ先に持ち込む差分 (3点ドット)
+  #   git pd            -> vs origin/<default branch> (自動検出)
+  #   git pd develop    -> vs origin/develop
+  #   git pd main featX -> origin/main...featX
+  pd  = "!f() { t=\"${1:-$(git rev-parse --abbrev-ref origin/HEAD 2>/dev/null)}\"; t=\"${t:-origin/main}\"; case \"$t\" in */*) ;; *) t=\"origin/$t\";; esac; git diff \"$t...${2:-HEAD}\"; }; f"
+  pds = "!f() { t=\"${1:-$(git rev-parse --abbrev-ref origin/HEAD 2>/dev/null)}\"; t=\"${t:-origin/main}\"; case \"$t\" in */*) ;; *) t=\"origin/$t\";; esac; git diff --stat \"$t...${2:-HEAD}\"; }; f"
+  pl  = "!f() { t=\"${1:-$(git rev-parse --abbrev-ref origin/HEAD 2>/dev/null)}\"; t=\"${t:-origin/main}\"; case \"$t\" in */*) ;; *) t=\"origin/$t\";; esac; git log --oneline \"$t..${2:-HEAD}\"; }; f"
+
+  # PR diff をブラウザ(difit)で精読。引数は pd と同じ。 git pdw / git pdw develop
+  pdw = "!f() { t=\"${1:-$(git rev-parse --abbrev-ref origin/HEAD 2>/dev/null)}\"; t=\"${t:-origin/main}\"; case \"$t\" in */*) ;; *) t=\"origin/$t\";; esac; difit \"${2:-HEAD}\" \"$t\" --merge-base; }; f"
 
 [credential "https://github.com"]
   helper = ""
