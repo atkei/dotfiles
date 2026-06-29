@@ -74,27 +74,37 @@ require('lazy').setup({
   },
 
   {
-    'nvim-mini/mini.files',
-    version = false,
-    dependencies = { { 'nvim-mini/mini.icons', opts = {} } },
-    keys = {
-      {
-        '<leader>e',
-        function()
-          MiniFiles.open()
-        end,
-        desc = 'Files',
-      },
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
     },
-    config = function(_, opts)
-      require('mini.files').setup(opts)
-    end,
+    cmd = 'Neotree',
+    keys = {
+      { '<leader>e', '<cmd>Neotree toggle reveal left<cr>', desc = 'File explorer (toggle)' },
+    },
     opts = {
-      options = {
-        use_as_default_explorer = true,
+      close_if_last_window = true,
+      window = {
+        width = 32,
+        mappings = {
+          ['<space>'] = 'none', -- leader と衝突させない
+        },
       },
-      windows = {
-        preview = true,
+      filesystem = {
+        -- 開いているファイルをツリー上で自動追従
+        follow_current_file = { enabled = true },
+        -- ファイルシステムの変更を自動反映
+        use_libuv_file_watcher = true,
+        -- netrw を乗っ取り、ディレクトリを開いたら neo-tree を表示
+        hijack_netrw_behavior = 'open_default',
+        filtered_items = {
+          -- dotfiles リポジトリなので隠しファイルは常に表示する
+          hide_dotfiles = false,
+          hide_gitignored = false,
+        },
       },
     },
   },

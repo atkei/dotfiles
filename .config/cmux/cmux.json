@@ -7,7 +7,7 @@
       "closeTab": ["ctrl+a", "x"],
       "nextSurface": ["ctrl+a", "n"],
       "prevSurface": ["ctrl+a", "p"],
-      "splitRight": ["ctrl+a", "\\"],
+      "splitRight": ["ctrl+a", "¥"],
       "splitDown": ["ctrl+a", "-"],
       "focusLeft": ["ctrl+a", "h"],
       "focusDown": ["ctrl+a", "j"],
